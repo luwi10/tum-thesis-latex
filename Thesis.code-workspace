@@ -1,0 +1,41 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)",
+        
+        "files.exclude": {
+            "**/.git": true,
+            "**/*.aux": true,
+            "**/*.bbl": true,
+            "**/*.bcf": true,
+            "**/*.blg": true,
+            "**/*.fdb_latexmk": true,
+            "**/*.fls": true,
+            "**/*.glg": true,
+            "**/*.glo": true,
+            "**/*.gls": true,
+            "**/*.glsdefs": true,
+            "**/*.idx": true,
+            "**/*.ilg": true,
+            "**/*.ind": true,
+            "**/*.lof": true,
+            "**/*.log": true,
+            "**/*.lot": true,
+            "**/*.mw": true,
+            "**/*.nlo": true,
+            "**/*.nls": true,
+            "**/*.out": true,
+            "**/*.run.xml": true,
+            "**/*.synctex.gz": true,
+            "**/*.thm": true,
+            "**/*.toc": true,
+            "**/*.xdy": true
+        },
+    
+        "latex-workshop.linting.chktex.enabled": true,
+    }
+}

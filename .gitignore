@@ -1,5 +1,4 @@
 /build/*
-!/build/main.pdf
 /logos/*.pdf
 
 ## Core latex/pdflatex auxiliary files:

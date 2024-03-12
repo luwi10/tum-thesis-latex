@@ -1,11 +1,11 @@
-# From https://tex.stackexchange.com/questions/58963/latexmk-with-makeglossaries-and-auxdir-and-outdir#59098
-add_cus_dep('glo', 'gls', 0, 'makeglossaries');
-sub makeglossaries {
-  my ($base_name, $path) = fileparse($_[0]);
-  pushd $path;
-  my $return = system "makeglossaries $base_name";
-  popd;
-  return $return;
-}
+# Set the program used to generate the PDF
+# 1: pdflatex
+# 2: postscript conversion, don't use this
+# 3: dvi conversion, don't use this
+# 4: lualatex
+# 5: xelatex
+$pdf_mode = 1;
+$root_filename = 'main.tex';
+$out_dir = 'build';
 
-$success_cmd = 'make _fachschaft-print'
+set_tex_cmds("-interaction=nonstopmode -file-line-error -synctex=1 %O %S");

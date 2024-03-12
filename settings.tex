@@ -34,15 +34,6 @@
 }
 \usepackage{ifthen}
 
-% for fachschaft_print.pdf
-\makeatletter
-\if@twoside
-	\typeout{TUM-Dev LaTeX-Thesis-Template: twoside}
-\else
-	\typeout{TUM-Dev LaTeX-Thesis-Template: oneside}
-\fi
-\makeatother
-
 \addto\extrasamerican{
 	\def\lstnumberautorefname{Line}
 	\def\chapterautorefname{Chapter}
@@ -53,19 +44,6 @@
 
 \addto\extrasngerman{
 	\def\lstnumberautorefname{Zeile}
-}
-
-% Themes
-\ifthenelse{\equal{\detokenize{dark}}{\jobname}}{%
-  % Dark theme
-  \newcommand{\bg}{black} % background
-  \newcommand{\fg}{white} % foreground
-  \usepackage[pagecolor=\bg]{pagecolor}
-  \color{\fg}
-}{%
-  % Light theme
-  \newcommand{\bg}{white} % background
-  \newcommand{\fg}{black} % foreground
 }
 
 \bibliography{bibliography}
