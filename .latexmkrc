@@ -7,5 +7,6 @@
 $pdf_mode = 1;
 $root_filename = 'main.tex';
 $out_dir = 'build';
+$biber = "biber --output_directory=$out_dir";
 
 set_tex_cmds("-interaction=nonstopmode -file-line-error -synctex=1 %O %S");

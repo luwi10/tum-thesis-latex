@@ -5,6 +5,7 @@
         }
     ],
     "settings": {
+        "terminal.integrated.defaultProfile.windows": "Command Prompt",
         "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)",
         
         "files.exclude": {
@@ -37,5 +38,6 @@
         },
     
         "latex-workshop.linting.chktex.enabled": true,
+        "latex-workshop.view.pdf.color.dark.backgroundColor": "#1f1f1f",
     }
 }
