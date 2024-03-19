@@ -2,8 +2,56 @@
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
 \chapter{Background}\label{chapter:background}
+In this chapter, the theoretical background of time-reversal imaging and rays as model for electromagnetic waves according to Maxwell's equations is presented.
+These two concepts are essential for understanding the the time-reversal imaging process and its underlying physical principles. 
 
 \section{Time-Reversal invariance of Maxwell's equations}
+\subsection{Time-Reversal in physics}
+The evolution of a physical system in time can be described by a curve \(s(t)\) that is moving through a statespace \(\mathbb{P}\).
+When talking about time-reversal in general, one is usually referring to the time-reversal transformation which consists of two components as stated in~\parencite{roberts_reversing_2022}.
+First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
+Secondly, a time-reversal operator has to be applied to each instantaneous state \(s(t) \mapsto Ts(t)\), i.e.\ a ball flying to the right would become a Ball flying to the left.
+This time-reversal operator is reversing for some properties (momentum) and for some properties preserving (kinetic energy).
+
+\subsection{Time-Reversal invariance of physical laws}
+As mentioned before, the curve \(s(t)\) through the statespace \(\mathbb{P}\) describes the evolution of a physical system in time.
+This means, \(s(t)\) is a solution to the equations given by the laws that describe the system. 
+A law being time-reversal invariant, therefore implies that the time-reversed curve \(s(-t)\) is also a solution to this law.
+
+For a more hands-on example, imagine filming a ball that is influenced by gravity flying through the air.
+The Newtonian mechanics are time-reversal invariant, this means the film can be played backwards and the ball will still follow the laws of Newtonian mechanics.
+
+An example for a non time-reversal invariant law is the second law of thermodynamics, which states that the entropy of an isolated system never decreases.
+This means, that a film of a gas spreading out in a room played backwards would not comply to this law, as the entropy of the system in the backwards film actually decreases by time.
+
+\subsection{Time-Reversal invariance of Maxwell's equations}
+Maxwell's equations formulate the foundations of classical electromagnetism.
+They state that the electromagnetic field consists of the electric field \(\vec{E}\) and the magnetic field \(\vec{B}\) which are related by the following equations:
+\begin{align}
+    \nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \label{eq:maxwell1} \\
+    \nabla \cdot \vec{B} &= 0 \label{eq:maxwell2} \\
+    \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:maxwell3} \\
+    \nabla \times \vec{B} &= \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:maxwell4}
+\end{align}
+For the time-reversal of these equations, one first has to understand, how the time reversal operator \(T\) acts on the fields \(\vec{E}\) and \(\vec{B}\).
+Taking into account, that the Poynting vector \(\vec{S} = \vec{E} \times \vec{B}\) is a measure for the energy flow of the electromagnetic field, the time-reversal of the fields has to be chosen in a way that the Poynting vector is reversed as well.
+This means, that either \(\vec{E}\) or \(\vec{B}\) have to be reversed so the Poynting vector changes sign. 
+
+According to \parencite{sigwarth_time_2022} the Maxwell equations remain invariant if the fields and densities are transformed as follows:
+\begin{align}
+    \vec{E} &\mapsto \vec{E} \\
+    \vec{B} &\mapsto -\vec{B} \\
+    \rho &\mapsto \rho \\
+    \vec{J} &\mapsto -\vec{J}
+\end{align}
+
+An intiutive explanation for this invariance is given by the fact, that the electric field \(\vec{E}\) is a measure for the force acting on a charge, while the magnetic field \(\vec{B}\) is a measure for the force acting on a moving charge.   
+
+
+
+
+
+
 
 \section{Mathematical justification for the Time-Reversal of Electro-Magnetic waves}
 
