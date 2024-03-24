@@ -3,57 +3,151 @@
 
 \chapter{Background}\label{chapter:background}
 In this chapter, the theoretical background of time-reversal imaging and rays as model for electromagnetic waves according to Maxwell's equations is presented.
-These two concepts are essential for understanding the the time-reversal imaging process and its underlying physical principles. 
+These two concepts are essential for understanding the the time-reversal imaging process proposed in this thesis and its underlying physical principles. 
 
-\section{Time-Reversal invariance of Maxwell's equations}
+\section{Time-Reversal of the Electromagnetic Field}
 \subsection{Time-Reversal in physics}
 The evolution of a physical system in time can be described by a curve \(s(t)\) that is moving through a statespace \(\mathbb{P}\).
 When talking about time-reversal in general, one is usually referring to the time-reversal transformation which consists of two components as stated in~\parencite{roberts_reversing_2022}.
 First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
-Secondly, a time-reversal operator has to be applied to each instantaneous state \(s(t) \mapsto Ts(t)\), i.e.\ a ball flying to the right would become a Ball flying to the left.
+Secondly, a time-reversal operator has to be applied to each instantaneous state \(s(t) \mapsto \operatorname{T}s(t)\), i.e.\ a ball flying to the right would become a Ball flying to the left.
 This time-reversal operator is reversing for some properties (momentum) and for some properties preserving (kinetic energy).
+
+
+In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\operatorname{T}s(-t)\). 
+
+
 
 \subsection{Time-Reversal invariance of physical laws}
 As mentioned before, the curve \(s(t)\) through the statespace \(\mathbb{P}\) describes the evolution of a physical system in time.
 This means, \(s(t)\) is a solution to the equations given by the laws that describe the system. 
-A law being time-reversal invariant, therefore implies that the time-reversed curve \(s(-t)\) is also a solution to this law.
+A law being time-reversal invariant, therefore implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
 
-For a more hands-on example, imagine filming a ball that is influenced by gravity flying through the air.
-The Newtonian mechanics are time-reversal invariant, this means the film can be played backwards and the ball will still follow the laws of Newtonian mechanics.
+For a more hands-on example, imagine filming a ball that is influenced by gravity flying through a vacuum.
+Newtons second law \({F}=m \cdot {a}\) is time-reversal invariant. This means the film can be played backwards and the trajectory of the ball will still follow Newtons second law.
 
 An example for a non time-reversal invariant law is the second law of thermodynamics, which states that the entropy of an isolated system never decreases.
 This means, that a film of a gas spreading out in a room played backwards would not comply to this law, as the entropy of the system in the backwards film actually decreases by time.
 
+
+
 \subsection{Time-Reversal invariance of Maxwell's equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.
-They state that the electromagnetic field consists of the electric field \(\vec{E}\) and the magnetic field \(\vec{B}\) which are related by the following equations:
+They relate the electric field \(E\), the electric displacement field \(D\), the magnetic field \(H\) and the magnetic flux density \(B\)  by the following equations, where \(\rho \) and \({J}\) denote the electric charge and current densities.
 \begin{align}
-    \nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \label{eq:maxwell1} \\
-    \nabla \cdot \vec{B} &= 0 \label{eq:maxwell2} \\
-    \nabla \times \vec{E} &= -\frac{\partial \vec{B}}{\partial t} \label{eq:maxwell3} \\
-    \nabla \times \vec{B} &= \mu_0 \vec{J} + \mu_0 \varepsilon_0 \frac{\partial \vec{E}}{\partial t} \label{eq:maxwell4}
+    \nabla \cdot D &= \rho \label{eq:maxwell1} \\
+    \nabla \cdot B &= 0 \label{eq:maxwell2} \\
+    \nabla \times E &= -\frac{\partial B}{\partial t} \label{eq:maxwell3} \\
+    \nabla \times H &= J + \frac{\partial D}{\partial t} \label{eq:maxwell4}
 \end{align}
-For the time-reversal of these equations, one first has to understand, how the time reversal operator \(T\) acts on the fields \(\vec{E}\) and \(\vec{B}\).
-Taking into account, that the Poynting vector \(\vec{S} = \vec{E} \times \vec{B}\) is a measure for the energy flow of the electromagnetic field, the time-reversal of the fields has to be chosen in a way that the Poynting vector is reversed as well.
-This means, that either \(\vec{E}\) or \(\vec{B}\) have to be reversed so the Poynting vector changes sign. 
+Generally \(E\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
+In this paper only reciprocal anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
+This leads to a reduced form of Maxwell's equations, where the electric field \(E\) and the magnetic field \(H\) are related by
+\begin{align}
+    \nabla \cdot E &= \frac{\rho}{\epsilon} \label{eq:maxwell5} \\
+    \nabla \cdot H &= 0 \label{eq:maxwell6} \\
+    \nabla \times E &= -\mu \frac{\partial H}{\partial t} \label{eq:maxwell7} \\
+    \nabla \times H &= \epsilon {J} + \frac{\partial E}{\partial t} \label{eq:maxwell8}
+\end{align}
+
+For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(E\) and \(H\).
+
+Taking into account, that the Poynting vector \(S = E \times H\) is a measure for the energy flow of the electromagnetic field, the time-reversal of these fields has to be chosen in a way that the Poynting vector is reversed as well.
+This means, that either \(E\) or \(H\), but not both, have to be reversed so the Poynting vector changes sign. 
 
 According to \parencite{sigwarth_time_2022} the Maxwell equations remain invariant if the fields and densities are transformed as follows:
 \begin{align}
-    \vec{E} &\mapsto \vec{E} \\
-    \vec{B} &\mapsto -\vec{B} \\
-    \rho &\mapsto \rho \\
-    \vec{J} &\mapsto -\vec{J}
+    \operatorname{T}E &= E \\
+    \operatorname{T}H &= -H \\
+    \operatorname{T}\rho &= \rho \\
+    \operatorname{T}{J} &= -{J}
 \end{align}
 
-An intiutive explanation for this invariance is given by the fact, that the electric field \(\vec{E}\) is a measure for the force acting on a charge, while the magnetic field \(\vec{B}\) is a measure for the force acting on a moving charge.   
+An intiutive explanation for this transformation is given by the fact, that the electric field \(E\) is a measure for the force acting on a charge, while the magnetic field \(H\) is a measure for the force acting on a moving charge. 
+Accordingly if we reverse time, the direction of the charges will revert and hence the magnetic field should revert. 
+In contrast there is no reason for a positive charge to become a negative charge and vice versa, so the electric field stays the same.
 
 
 
+\subsection{Time-Reversal in the frequency domain}
+With the time-reversal operator defined for all components of Maxwell's equations we can now write the time-reversal of the electric and magnetic field in the time domain as
+\begin{align}
+    E_{TR}(t) &= E(-t) \\
+    H_{TR}(t) &= -H(-t)
+\end{align}
+The fourier transformation of these equations with \(\mathcal{F}\{X(t)\} = \hat{X}(\omega) = \int X(t) \cdot e^{i\omega t} \, dt\) leads to
+\begin{align}
+    \hat{E}_{TR}(\omega) &= \hat{E}{(\omega)}^* \\
+    \hat{H}_{TR}(\omega) &= -\hat{H}{(\omega)}^*
+\end{align}
+where \(^*\) denotes the complex conjugate. 
+
+As only fields in the frequency domain will be considered in the following, the hat is dropped.
 
 
 
+\section{Mathematical justification for the Time-Reversal of Electromagnetic waves}
+In \parencite{de_rosny_theory_2010} the mathematical groundwork for the time-reversal of electromagnetic waves has been laid out.
+This chapter won't cover the derivation of the results, but review them as they represent the starting point of mathematical justification for the time-reversal of electromagnetic waves.
 
-\section{Mathematical justification for the Time-Reversal of Electro-Magnetic waves}
+\subsection{The six-vector formalism}
+The mentioned paper uses two formalisms.
+The electric and magnetic field are combined into the  six-vector \(\psi \) which is defined as
+\begin{equation}
+    \psi = \begin{pmatrix}
+        \mathbf{E} \\
+        i\mathbf{H}
+    \end{pmatrix}
+\end{equation}
+and a source vector \(q\) is defined as
+\begin{equation}
+    q = \begin{pmatrix}
+        -i\mathbf{J} \\
+        \mathbf{m}
+    \end{pmatrix}
+\end{equation}
+with \(\mathbf{J}\) and \(\mathbf{m}\) denoting the electric and magnetic current density vectors.
+
+These vector-distributions are linearly related through the Green's function \(G\) of the system
+\begin{equation}
+    \psi(\mathbf{r}) = \int G(\mathbf{r}, \mathbf{r}^{\prime}) q(\mathbf{r}^{\prime}) \, d^3 r^{\prime}
+\end{equation}
+For improved readability the integral is written in the following way
+\begin{equation}
+    \int G(\mathbf{r}, \mathbf{r}^{\prime}) q(\mathbf{r}^{\prime}) \, d^3 r^{\prime} = [G(\mathbf{r}) q]
+\end{equation}
+
+The above defintions imply that the time-reversal operator \(\operatorname{T}\) acts on the six-vector and the source vector by complex conjugation.
+\begin{align}
+    \operatorname{T}\psi &= \psi^* \\
+    \operatorname{T}q &= q^*
+\end{align}
+
+\subsection{The electromagnetic time-reversal equation}
+Under the assumption of a reciprocal environment (\(\epsilon \) and \(\mu \) are hermitian) the following equation is derived in \parencite{de_rosny_theory_2010}:
+\begin{equation}\label{time-reversal-equation}
+    \begin{aligned}
+    & \underbrace{\oint_{\delta \Gamma} G(\mathbf{r}^{\prime}, \mathbf{r})\left(\mathbf{n}\left(\mathbf{r}^{\prime}\right) \times\left[G^*\left(\mathbf{r}^{\prime}\right) q^*\right]\right) d^2 r^{\prime}}_{\psi_S(\mathbf{r})} \\
+    &=\underbrace{[G^*(\mathbf{r}) q^*] - [G(\mathbf{r}) q^*]}_{\psi_V(\mathbf{r})}
+    \end{aligned}
+\end{equation}
+Taking into account that \([G^*(\mathbf{r}) q^*] = \psi^*(\mathbf{r}) = \operatorname{T}\psi(\mathbf{r})\), the left-hand side \(\psi_S(\mathbf{r})\) can be interpreted as a procedure of four steps:
+\begin{enumerate}
+    \item Measure the electromagnetic field \(\psi \) at the surface \(\delta \Gamma \).\ (\(\oint_{\delta \Gamma} \ldots  (\ldots \times \psi^*(\mathbf{r}^{\prime})) d^2 r^{\prime}\))
+    \item Time-revere these measurements.\ (\(\psi^*(\mathbf{r}^{\prime}) = \operatorname{T}\psi(\mathbf{r}^{\prime})\))
+    \item Deduce a source distribution \(q_{TR}\) from these time-reversed measurements on the surface \(\delta \Gamma \) according to the normal vector of the surface.\ (\(q_{TR}(\mathbf{r}^{\prime}) = \mathbf{n}(\mathbf{r}^{\prime}) \times \operatorname{T}\psi(\mathbf{r}^{\prime})\))
+    \item Calculate the electromagnetic field \(\psi_S(\mathbf{r})\) generated by this source distribution.\ (\(\psi_S(\mathbf{r}) = \oint_{\delta \Gamma} G(\mathbf{r}^{\prime}, \mathbf{r}) q_{TR}(\mathbf{r}^{\prime})\))
+\end{enumerate}
+The electromagnetic time-reversal equation~\eqref{time-reversal-equation} then states that this field \(\psi_S(\mathbf{r})\) is equal to the time-reversed field \(\psi_{TR}(\mathbf{r}) = [G^*(\mathbf{r}) q^*]\) minus a diverging field \(A(\mathbf{r}) = [G(\mathbf{r}) q^*]\).
+\begin{equation}
+    \psi_S(\mathbf{r}) = \psi_{TR}(\mathbf{r}) - A(\mathbf{r})
+\end{equation}
+Further investigation of \(A\) shows that it is equal to the field generated by the time-reversed sources.
+As the sources are initially turned off, their time-reversed excitation and thus the field \(A\) eventually goes to zero.
+
+In conclusion \parencite{de_rosny_theory_2010} proves that it is possible to compute or recreate the time-reversed version of an electromagnetic field \(\psi_{TR}\) inside of a mediumg \(\Gamma \) by measuring the field \(\psi \) at the surface \(\delta \Gamma \), applying the time-reversal operator \(\operatorname{T}\) to these measurements and emiting the resulting sources back into \(\Gamma \).
+
+
 
 \section{A signal theory approach to Time-Reversal Imaging}
 
