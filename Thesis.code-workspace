@@ -39,5 +39,6 @@
     
         "latex-workshop.linting.chktex.enabled": true,
         "latex-workshop.view.pdf.color.dark.backgroundColor": "#1f1f1f",
+        "latex-workshop.latex.watch.pdf.delay": 1000,
     }
 }

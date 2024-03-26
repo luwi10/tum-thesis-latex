@@ -86,7 +86,7 @@ As only fields in the frequency domain will be considered in the following, the 
 
 
 
-\section{Mathematical justification for the Time-Reversal of Electromagnetic waves}
+\section{Mathematical justification for the Time-Reversal of Electromagnetic waves}\label{sec:math_foundations_em_tr}
 In \parencite{de_rosny_theory_2010} the mathematical groundwork for the time-reversal of electromagnetic waves has been laid out.
 This chapter won't cover the derivation of the results, but review them as they represent the starting point of mathematical justification for the time-reversal of electromagnetic waves.
 
@@ -151,5 +151,50 @@ In conclusion \parencite{de_rosny_theory_2010} proves that it is possible to com
 
 \section{A signal theory approach to Time-Reversal Imaging}
 
+\subsection{Active-Source location}
+Assuming that the \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\mathbf{r_i}\), we obtain the source-distribution \(q(\mathbf{r}, \omega)\).
+\begin{equation}
+    q(\mathbf{r}, \omega) = \sum_{i=1}^{N} q_i(\omega) \cdot \delta(\mathbf{r} - \mathbf{r_i})
+\end{equation}
+To explain how the described time-reversal process can be used for active-source location, a signal theory approach is taken.
+To do this the medium is modelled as a reciprocal LTI-System.
+Now the propagation of an electromagnetic wave-signal \(\psi(\mathbf{r}, \omega )\) from a source \(q_a(\omega )\) at \(\mathbf{r_a}\) to a receiver at \(\mathbf{r_b}\) can be reduced to a simple input-output system with the transfer function \(H_{a\rightarrow b}(\omega) = G(\mathbf{r_a}, \mathbf{r_b}, \omega)\).
+\begin{equation}
+    \psi(\mathbf{r_b}, \omega) = H_{a\rightarrow b}(\omega) \cdot q_a(\omega)
+\end{equation}
+This can be applied to the whole source distribution \(q(\mathbf{r}, \omega)\) to obtain the wave-signal at the receiver.
+\begin{equation}
+    \psi(\mathbf{r_b}, \omega) = \sum_{i=1}^{N} H_{i\rightarrow b}(\omega) \cdot q_i(\omega)
+\end{equation}
+From this wave-signal, an equivalent source \(p_b(\omega)\) can be deduced by applying the measurement operator \(\operatorname{M}\). This is done at all \(M\) receivers at the locations \(\mathbf{r_j}\).  
+\begin{equation}
+    p_j(\omega) = \operatorname{M} \psi(\mathbf{r_j}, \omega)
+\end{equation}
+Time-reversing (complex-conjugating) the measured sources at all the receivers and reemitting them will result in the following wave-signal distribution \(\psi_{TR}(\mathbf{r_x}, \omega)\) that is again measured with \(\operatorname{M}\)
+\begin{equation}\label{signal-time-reversal}
+    \operatorname{M} \psi_{TR}(\mathbf{r_x}, \omega) = \sum_{j=1}^{M} \operatorname{M} H_{j\rightarrow x} \cdot p_j^*(\omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} \operatorname{M} H_{j\rightarrow x} \cdot \operatorname{M}^* H^*_{i\rightarrow j}(\omega) \cdot q^*_i(\omega)
+\end{equation}
+At this point it should be mentioned, that the usage of \(\psi \), \(q\) and the relating measurement operator \(\operatorname{M}\) was chosen for consistency with the Section~\ref{sec:math_foundations_em_tr}.
+In most papers about electromagnetic time-reversal only the electric field \(E\) is considered for simplicity.
+Then, by substituting \(E\) for \(\psi \) and describing the sources \(q_i\) by the electric field \(E_i\) they cause at location \(\mathbf{r_i}\), equation~\eqref{signal-time-reversal} becomes
+\begin{equation}
+    E_{TR}(\mathbf{r_x}, \omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} H_{j\rightarrow x} \cdot H^*_{i\rightarrow j}(\omega) \cdot E^*_i(\omega)
+\end{equation}
+
+This approach is valid for the far-field application.
+Here the electric and magnetic fields are orthogonal, so it is sufficient to only keep track of the electric field.
+Furthermore the deduction of an equivalent source \(q_{TR}(\mathbf{r}) = n(\mathbf{r}) \times \psi^*(\mathbf{r})\) can be simplified to being proportional to the electric and magnetic field respectively~\parencite{de_rosny_theory_2010}
+\begin{equation}
+    q_{T R}(\mathbf{r})=\left(\begin{array}{c}
+        \frac{i \mathbf{E}^*(\mathbf{r})}{\eta} \\
+        \eta \mathbf{H}^*(\mathbf{r})
+        \end{array}\right)
+\end{equation}
+
+
+
+
+
 \section{The Ray Concept in Electromagnetic waves}
+
 
