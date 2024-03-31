@@ -34,20 +34,20 @@ This means, that a film of a gas spreading out in a room played backwards would 
 \subsection{Time-Reversal invariance of Maxwell's equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.
 They relate the electric field \(E\), the electric displacement field \(D\), the magnetic field \(H\) and the magnetic flux density \(B\)  by the following equations, where \(\rho \) and \({J}\) denote the electric charge and current densities.
-\begin{align}
-    \nabla \cdot D &= \rho \label{eq:maxwell1} \\
-    \nabla \cdot B &= 0 \label{eq:maxwell2} \\
-    \nabla \times E &= -\frac{\partial B}{\partial t} \label{eq:maxwell3} \\
-    \nabla \times H &= J + \frac{\partial D}{\partial t} \label{eq:maxwell4}
+\begin{align}\label{eq:maxwell}
+    \nabla \cdot D &= \rho \\
+    \nabla \cdot B &= 0 \\
+    \nabla \times E &= -\frac{\partial B}{\partial t} \\
+    \nabla \times H &= J + \frac{\partial D}{\partial t}
 \end{align}
 Generally \(E\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
 In this paper only reciprocal anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
 This leads to a reduced form of Maxwell's equations, where the electric field \(E\) and the magnetic field \(H\) are related by
-\begin{align}
-    \nabla \cdot E &= \frac{\rho}{\epsilon} \label{eq:maxwell5} \\
-    \nabla \cdot H &= 0 \label{eq:maxwell6} \\
-    \nabla \times E &= -\mu \frac{\partial H}{\partial t} \label{eq:maxwell7} \\
-    \nabla \times H &= \epsilon {J} + \frac{\partial E}{\partial t} \label{eq:maxwell8}
+\begin{align}\label{eq:maxwell_reciprocal}
+    \nabla \cdot E &= \frac{\rho}{\epsilon} \\
+    \nabla \cdot H &= 0 \\
+    \nabla \times E &= \mu \frac{\partial H}{\partial t} \\
+    \nabla \times H &= \epsilon {J} + \frac{\partial E}{\partial t}
 \end{align}
 
 For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(E\) and \(H\).
@@ -250,12 +250,68 @@ To calculate the imaging formula we need to know the transfer-function \(H_{i\ri
 This could be done by full-wave simulations of delta-impulses at the measurement locations.
 These simulations are extremely computationally expensive.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
-The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function.
+The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough.
 
+\subsection{The Eikonal Equation}
 
-\subsection{}
+\subsection{Deriving the Eikonal equation from Maxwell's equations}
 
+Consider a source-free (\(q(\mathbf{r}) = J(\mathbf{r}) = 0\)) and isotropic (\(\epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r})\) and \(\mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r})\)) medium.
+Maxwell's equations can then be further simplified to
+\begin{align}
+    \nabla \cdot E &= 0 \\
+    \nabla \cdot H &= 0 \\
+    \nabla \times E &= -\mu \frac{\partial H}{\partial t}\label{electric_curl} \\
+    \nabla \times H &= \epsilon \frac{\partial E}{\partial t}\label{magnetic_curl}
+\end{align}
+Taking the curl of equation~\eqref{electric_curl} and differentiating~\eqref{magnetic_curl} with respect to time yields
+\begin{align}
+    \nabla \times (\nabla \times E) &= -\mu (\frac{\partial}{\partial t} \nabla \times H) \\
+    \frac{\partial}{\partial t} \nabla \times H &= \epsilon \frac{\partial}{\partial t^2} E
+\end{align}
+Substituting the second equation into the first one results in
+\begin{equation}
+    \nabla \times (\nabla \times E) = \mu \epsilon \frac{\partial^2}{\partial t^2} E
+\end{equation}
+Finally, using Green's vector identity (\(\nabla \times (\nabla \times A) = \nabla(\nabla \cdot A) - \nabla^2 A\)) the wave equation for the electric field is obtained, where \(\nabla^2\) denotes the componential Laplacian operator.
+\begin{equation}
+    \nabla^2 E + \mu \epsilon \frac{\partial^2}{\partial t^2} E = 0
+\end{equation}
+The same equation can be derived for the magnetic field and holds for each single component \(\phi \) of both fields.
+For monochromatic waves of frequency \(\omega \) it can be written in the frequency domain as
+\begin{equation}\label{electromagnetic_wave_equation}
+    \nabla^2 \phi(\mathbf{r}) + k_0^2\ n{(\mathbf{r})}^2 \cdot \phi(\mathbf{r}) = 0
+\end{equation}
+with \(k_0 = \omega \sqrt{\mu_0 \epsilon_0} \) denoting the vacuum wave-number and \(n(\mathbf{r}) = \sqrt{\epsilon_r(\mathbf{r}) \mu_r(\mathbf{r})}\) denoting the refractive index of the medium.
 
-\subsection{Fermat's Principle}
+For a monochromatic wave of frequency \(\omega \) the components \(\phi(\mathbf{r})\) can be described by the complex pointer \(\underline{\phi}(\mathbf{r}) = A(\mathbf{r}) \cdot e^{i k_0 \cdot \psi(\mathbf{r})}\) with amplitude \(A(\mathbf{r})\) and phase \(k_0 \cdot \psi(\mathbf{r})\).
+Equation~\eqref{electromagnetic_wave_equation} then converts to 
+\begin{equation}\label{electromagnetic_wave_equation_complex}
+    \nabla^2 A(\mathbf{r}) + 2ik_0 \cdot \nabla A(\mathbf{r}) \nabla \psi(\mathbf{r}) + k_0^2 A(\mathbf{r}) \cdot ({n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2) = 0
+\end{equation}
+with a more detailed derivation in~\ref{derivation}
 
+The transition from physical waves to geometrical optics is specified by the limit of \(k_0 \sim  \lambda^{-1} \rightarrow \infty \).
+Dividing~\eqref{electromagnetic_wave_equation_complex} by \(k_0^2 A(\mathbf{r})\) and assuming that the amplitude is slowly varying (\(\nabla A = \mathcal{O}(k_0^2)\)), the limit \(k_0 \rightarrow \infty \) yields the Eikonal equation.
+\begin{equation}
+    {n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2 = 0
+\end{equation}
 
+\subsubsection{Derivation}\label{derivation}
+
+Consider these identities
+\begin{align}
+    \nabla^2 (a \cdot b) &= \nabla^2 a \cdot b + 2 (\nabla a \nabla b) + a \nabla^2 b, \\
+    \nabla e^{i k_0 \cdot \psi(\mathbf{r})} &= i k_0 \cdot \nabla \psi(\mathbf{r}) \cdot e^{i k_0 \cdot \psi(\mathbf{r})}, \\
+    \nabla^2 e^{i k_0 \cdot \psi(\mathbf{r})} &= - k_0^2 \cdot {(\nabla \psi(\mathbf{r}))}^2 \cdot e^{i k_0 \cdot \psi(\mathbf{r})}.
+\end{align}
+which lead to
+\begin{gather}
+    \nabla^2 (A(\mathbf{r}) \cdot e^{ik_0 \cdot \psi(\mathbf{r})}) \\
+    = (\nabla^2 A(\mathbf{r}) + 2ik_0 \cdot \nabla A(\mathbf{r}) \nabla \psi(\mathbf{r}) - k_0^2 \cdot (\nabla \psi(\mathbf{r}))) \cdot e^{ik_0 \cdot \psi(\mathbf{r})}
+\end{gather}
+This results in the following equivalence (\(\underline{\phi}(\mathbf{r}) = A(\mathbf{r}) \cdot e^{ik_0 \cdot \psi(\mathbf{r})}\))
+\begin{gather}
+    \nabla^2 \underline{\phi}(\mathbf{r}) + k_0^2\ n{(\mathbf{r})}^2 \cdot \underline{\phi}(\mathbf{r}) \stackrel{!}{=} 0, \\
+    \Leftrightarrow \nabla^2 A(\mathbf{r}) + 2ik_0 \cdot \nabla A(\mathbf{r}) \nabla \psi(\mathbf{r}) + k_0^2 A(\mathbf{r}) \cdot ({n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2) \stackrel{!}{=} 0.
+\end{gather}
