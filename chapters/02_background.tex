@@ -41,13 +41,13 @@ They relate the electric field \(E\), the electric displacement field \(D\), the
     \nabla \times H &= J + \frac{\partial D}{\partial t}
 \end{align}
 Generally \(E\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
-In this paper only reciprocal anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
+In this paper only time-invariant, reciprocal and anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
 This leads to a reduced form of Maxwell's equations, where the electric field \(E\) and the magnetic field \(H\) are related by
 \begin{align}\label{eq:maxwell_reciprocal}
-    \nabla \cdot E &= \frac{\rho}{\epsilon} \\
-    \nabla \cdot H &= 0 \\
-    \nabla \times E &= \mu \frac{\partial H}{\partial t} \\
-    \nabla \times H &= \epsilon {J} + \frac{\partial E}{\partial t}
+    \nabla \cdot (\epsilon E) &= \rho \\
+    \nabla \cdot (\mu H) &= 0 \\
+    \nabla \times E &= -\mu \frac{\partial H}{\partial t} \\
+    \nabla \times H &= J + \epsilon \frac{\partial E}{\partial t}
 \end{align}
 
 For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(E\) and \(H\).
@@ -252,12 +252,28 @@ These simulations are extremely computationally expensive.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
 The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough.
 
-\subsection{The Eikonal Equation}
+\subsection{Fermat's principle}
+
+
+
+
+
+
+
+
+
 
 \subsection{Deriving the Eikonal equation from Maxwell's equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
 
-Consider a source-free (\(q(\mathbf{r}) = J(\mathbf{r}) = 0\)) and isotropic (\(\epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r})\) and \(\mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r})\)) medium.
+Consider a source-free, isotropic and locally homogenous medium
+\begin{gather}
+    q(\mathbf{r}) = J(\mathbf{r}) = 0 \\
+    \epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r}) \\
+    \mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r}) \\
+    \nabla \cdot D = \epsilon \nabla \cdot E \\
+    \nabla \cdot B = \mu \nabla \cdot H 
+\end{gather}
 Maxwell's equations can then be further simplified to
 \begin{align}
     \nabla \cdot E &= 0 \\
@@ -281,7 +297,7 @@ Finally, using Green's vector identity (\(\nabla \times (\nabla \times A) = \nab
 The same equation can be derived for the magnetic field and holds for each single component \(\phi \) of both fields.
 For monochromatic waves of frequency \(\omega \) it can be written in the frequency domain as
 \begin{equation}\label{electromagnetic_wave_equation}
-    \nabla^2 \phi(\mathbf{r}) + k_0^2\ n{(\mathbf{r})}^2 \cdot \phi(\mathbf{r}) = 0
+    \nabla^2 \phi(\mathbf{r}) - k_0^2\ n{(\mathbf{r})}^2 \cdot \phi(\mathbf{r}) = 0
 \end{equation}
 with \(k_0 = \omega \sqrt{\mu_0 \epsilon_0} \) denoting the vacuum wave-number and \(n(\mathbf{r}) = \sqrt{\epsilon_r(\mathbf{r}) \mu_r(\mathbf{r})}\) denoting the refractive index of the medium.
 
@@ -292,11 +308,22 @@ Equation~\eqref{electromagnetic_wave_equation} then converts to
 \end{equation}
 with a more detailed derivation in~\ref{derivation}
 
-The transition from physical waves to geometrical optics is specified by the limit of \(k_0 \sim  \lambda^{-1} \rightarrow \infty \).
-Dividing~\eqref{electromagnetic_wave_equation_complex} by \(k_0^2 A(\mathbf{r})\) and assuming that the amplitude is slowly varying (\(\nabla A = \mathcal{O}(k_0^2)\)), the limit \(k_0 \rightarrow \infty \) yields the Eikonal equation.
+The transition from physical waves to geometrical optics is marked by the limit of \(k_0 \sim  \lambda^{-1} \rightarrow \infty \).
+Dividing~\eqref{electromagnetic_wave_equation_complex} by \(k_0^2 A(\mathbf{r})\) and assuming that the amplitude is slowly varying, the limit \(k_0 \rightarrow \infty \) yields the Eikonal equation.
 \begin{equation}
     {n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2 = 0
 \end{equation}
+
+
+
+
+
+
+
+
+
+
+
 
 \subsubsection{Derivation}\label{derivation}
 
