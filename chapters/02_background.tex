@@ -252,17 +252,6 @@ These simulations are extremely computationally expensive.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
 The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough.
 
-\subsection{Fermat's principle}
-
-
-
-
-
-
-
-
-
-
 \subsection{Deriving the Eikonal equation from Maxwell's equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
 
@@ -311,10 +300,67 @@ with a more detailed derivation in~\ref{derivation}
 The transition from physical waves to geometrical optics is marked by the limit of \(k_0 \sim  \lambda^{-1} \rightarrow \infty \).
 Dividing~\eqref{electromagnetic_wave_equation_complex} by \(k_0^2 A(\mathbf{r})\) and assuming that the amplitude is slowly varying, the limit \(k_0 \rightarrow \infty \) yields the Eikonal equation.
 \begin{equation}
-    {n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2 = 0
+    {n(\mathbf{r})}^2 - {(\nabla \psi(\mathbf{r}))}^2 = 0 \quad \Leftrightarrow \quad n(\mathbf{r}) = |\nabla \psi(\mathbf{r})|
 \end{equation}
 
 
+\subsection{Differential equation of rays}
+Wavefronts are surfaces of constant phase \(\psi(\mathbf{r})\).
+Rays are defined as the orthogonal trajectories of the wavefronts and can be written as curves
+\begin{equation}
+    \mathbf{r}(l) = \mathbf{r}_0 + \int_{0}^{l} \mathbf{v}(\mathbf{r}(l^{\prime})) \, dl^{\prime}
+\end{equation}
+with the unit-ray-vector \(\mathbf{v}(\mathbf{r}) = \frac{\nabla \psi(\mathbf{r})}{|\nabla \psi(\mathbf{r})|}\).
+
+
+The Eikonal equation combined with the unit-ray-vector leads to the differential equation of rays.
+\begin{equation}\label{ray-differential-equation}
+    n(\mathbf{r}) \cdot \mathbf{v}(\mathbf{r}) = \nabla \psi(\mathbf{r})
+\end{equation}
+Considering the identities \(\nabla(A^2)= 2 \cdot A \cdot \nabla A\) and \(\nabla[{(\nabla A)}^2] = 2 \cdot \nabla A \cdot \nabla^2 A\) and deriving equation~\eqref{ray-differential-equation} with respect to \(l\) yields~\parencite{born_foundations_1999}
+\begin{align}
+    \frac{d}{dl}(n(\mathbf{r}) \cdot \mathbf{v}(\mathbf{r})) &= \frac{d}{dl}(\nabla \psi(\mathbf{r})) = \nabla^2 \psi(\mathbf{r}) \cdot \frac{d\mathbf{r}}{dl} \\
+    &= \nabla^2 \psi(\mathbf{r}) \cdot \mathbf{v}(\mathbf{r}) = \nabla^2 \psi(\mathbf{r}) \cdot \nabla \psi(\mathbf{r}) \cdot \frac{1}{n(\mathbf{r})} \\
+    &= \frac{1}{2n(\mathbf{r})} \cdot \nabla[{(\nabla \psi)}^2] = \frac{1}{2n(\mathbf{r})} \cdot \nabla({n(\mathbf{r})}^2) \\
+    &= \nabla n(\mathbf{r})
+\end{align}
+For a ray in a homogenous medium, i.e.~\(n(\mathbf{r}) = n_0\), this equation becomes
+\begin{equation}
+    n_0 \cdot \frac{d}{dl}\mathbf{v}(\mathbf{r}) = 0
+\end{equation}
+so the unit-ray-vector is a constant and hence the ray is a straight line.
+\begin{equation}
+    \mathbf{r}(l) = \mathbf{r}_0 + l \cdot \mathbf{v}_0
+\end{equation}
+
+
+\subsection{Refraction and Reflection at plane interfaces}
+At the interference of two homogenous media (\(\Lambda_1\) and \(\Lambda_2\)) with different refractive indices \(n_1\) and \(n_2\), the differential equation of rays must be fulfilled.
+An incident ray with unit-vector \(\mathbf{v}_1\) and the transmitted ray with unit-vector \(\mathbf{v}_2\) therefore satisfy the following conditions at the interface \(\Gamma \).
+\begin{equation}
+    n_1 \cdot \mathbf{v}_1 = \nabla \psi|_{r \in \Lambda_1 } \quad n_2 \cdot \mathbf{v}_2 = \nabla \psi|_{r \in \Lambda_2 } 
+\end{equation}
+The closed integral over a gradient field is always zero.
+If a rectangular curve (width \(w\) and height \(h\)) is placed in the plane that is spanned by the incident ray and the normal \(\mathbf{n}\) so that the sides are tangential to \(\Gamma \) and \(h\) goes to zero, the integral of the gradient field must still be zero.
+\begin{equation}
+    \oint \nabla \psi \cdot d\mathbf{r} = \int_{0}^{w} \nabla \psi|_{r \in \Lambda_1 } \cdot \mathbf{t} \, dw + \int_{0}^{w} \nabla \psi|_{r \in \Lambda_1 } \cdot -\mathbf{t} \, dw = 0
+\end{equation}
+This means that the tangential components of the ray-vectors \(n \cdot \mathbf{v}\) are continuous across the interface.
+\begin{equation}
+    (n_1 \cdot \mathbf{v}_2) \cdot \mathbf{t} = (n_2 \cdot \mathbf{v}_1) \cdot \mathbf{t}
+\end{equation}
+Furthermore, as \(\mathbf{t} \times \mathbf{v} = 0\) this implies
+\begin{equation}
+    n_1 \cdot (\mathbf{n} \times \mathbf{v}_2) = n_2 \cdot (\mathbf{n} \times \mathbf{v}_1)
+\end{equation}
+
+
+
+\subsection{Phase propagation along ray-paths}
+
+
+
+\subsection{Amplitude propagation along ray-paths}
 
 
 
