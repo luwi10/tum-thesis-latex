@@ -35,19 +35,15 @@ This means, that a film of a gas spreading out in a room played backwards would 
 Maxwell's equations formulate the foundations of classical electromagnetism.
 They relate the electric field \(E\), the electric displacement field \(D\), the magnetic field \(H\) and the magnetic flux density \(B\)  by the following equations, where \(\rho \) and \({J}\) denote the electric charge and current densities.
 \begin{align}\label{eq:maxwell}
-    \nabla \cdot D &= \rho \\
-    \nabla \cdot B &= 0 \\
-    \nabla \times E &= -\frac{\partial B}{\partial t} \\
-    \nabla \times H &= J + \frac{\partial D}{\partial t}
+    \nabla \cdot D &= \rho & \nabla \times E &= -\frac{\partial B}{\partial t} \\
+    \nabla \cdot B &= 0 & \nabla \times H &= J + \frac{\partial D}{\partial t}
 \end{align}
 Generally \(E\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
 In this paper only time-invariant, reciprocal and anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
 This leads to a reduced form of Maxwell's equations, where the electric field \(E\) and the magnetic field \(H\) are related by
 \begin{align}\label{eq:maxwell_reciprocal}
-    \nabla \cdot (\epsilon E) &= \rho \\
-    \nabla \cdot (\mu H) &= 0 \\
-    \nabla \times E &= -\mu \frac{\partial H}{\partial t} \\
-    \nabla \times H &= J + \epsilon \frac{\partial E}{\partial t}
+    \nabla \cdot (\epsilon E) &= \rho & \nabla \times E &= -\mu \frac{\partial H}{\partial t} \\
+    \nabla \cdot (\mu H) &= 0 & \nabla \times H &= J + \epsilon \frac{\partial E}{\partial t}
 \end{align}
 
 For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(E\) and \(H\).
@@ -57,29 +53,25 @@ This means, that either \(E\) or \(H\), but not both, have to be reversed so the
 
 According to \parencite{sigwarth_time_2022} the Maxwell equations remain invariant if the fields and densities are transformed as follows:
 \begin{align}
-    \operatorname{T}E &= E \\
-    \operatorname{T}H &= -H \\
-    \operatorname{T}\rho &= \rho \\
-    \operatorname{T}{J} &= -{J}
+    \operatorname{T}E &= E & \operatorname{T}\rho &= \rho \\
+    \operatorname{T}H &= -H & \operatorname{T}{J} &= -{J}
 \end{align}
 
 An intuitive explanation for this transformation is given by the fact, that the electric field \(E\) is a measure for the force acting on a charge, while the magnetic field \(H\) is a measure for the force acting on a moving charge. 
-Accordingly if we reverse time, the direction of the charges will revert and hence the magnetic field should revert. 
+Accordingly if time is reversed, the direction of the charges will revert and hence the magnetic field should revert. 
 In contrast there is no reason for a positive charge to become a negative charge and vice versa, so the electric field stays the same.
 
 
 
 \subsection{Time-Reversal in the frequency domain}
-With the time-reversal operator defined for all components of Maxwell's equations we can now write the time-reversal of the electric and magnetic field in the time domain as
-\begin{align}
-    E_{TR}(t) &= E(-t) \\
-    H_{TR}(t) &= -H(-t)
-\end{align}
+With the time-reversal operator defined for all components of Maxwell's equations the time-reversal of the electric and magnetic field in the time domain can now be written as
+\begin{equation}
+    E_{TR}(t) = E(-t) \quad H_{TR}(t) = -H(-t)
+\end{equation}
 The fourier transformation of these equations with \(\mathcal{F}\{X(t)\} = \hat{X}(\omega) = \int X(t) \cdot e^{i\omega t} \, dt\) leads to
-\begin{align}
-    \hat{E}_{TR}(\omega) &= \hat{E}{(\omega)}^* \\
-    \hat{H}_{TR}(\omega) &= -\hat{H}{(\omega)}^*
-\end{align}
+\begin{equation}
+    \hat{E}_{TR}(\omega) = \hat{E}{(\omega)}^* \quad \hat{H}_{TR}(\omega) = -\hat{H}{(\omega)}^*
+\end{equation}
 where \(^*\) denotes the complex conjugate. 
 
 As only fields in the frequency domain will be considered in the following, the hat is dropped.
@@ -158,7 +150,7 @@ Here the focus is on the localization of passive targets, which are scatterers t
 This problem is closely related to active-source localization, as the scattered field produced by passive targets can be interpreted as the radiated field from an induced source.~\parencite{chen_computational_2018}
 
 \subsection{Active-Source localization}
-Assuming that \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\mathbf{r_i}\), we obtain the source-distribution \(q(\mathbf{r}, \omega)\), with \(\delta(\mathbf{r}) \) denoting the dirac delta-function.
+Assuming that \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\mathbf{r_i}\), the source-distribution \(q(\mathbf{r}, \omega)\) is obtained, with \(\delta(\mathbf{r}) \) denoting the dirac delta-function.
 \begin{equation}
     q(\mathbf{r}, \omega) = \sum_{i=1}^{N} \delta(\mathbf{r} - \mathbf{r_i}) \cdot q_i(\omega)
 \end{equation}
@@ -210,7 +202,7 @@ Therefore the Constructive part is equal to \(|H_k(\omega)|^2 \cdot E^*_k(\omega
 This means the constructive part reconstructs the time-reversed signal at the source location \(\mathbf{r_k}\) without any phase distortion (\(\Im \{{|H_k(\omega)|^2}\} = 0\)) and an attenuation factor of \(|H_k(\omega)|^2\).
 Conversely the Destructive part is the sum of all cross-terms of the transfer functions \(H_{j\rightarrow k}(\omega)\) and \(H_{i\rightarrow j}(\omega)\) with \(i \neq k\) that will eventually cancel each other out if the number of receivers goes to infinity.
 
-If we evaluate~\eqref{electric-time-reversal} at any non-source location, no Constructive part will arise, hence the time-reversed signal at this location approaches zero.
+If~\eqref{electric-time-reversal} is evaluated at any non-source location, no Constructive part will arise, hence the time-reversed signal at this location approaches zero.
 With this in mind one can see how equation~\eqref{electric-time-reversal} approximates the time-reversed active-source distribution. 
 \begin{equation}
     E_{TR}(\mathbf{r}, \omega) \approx E_{TR-source}(\mathbf{r}, \omega) =  \sum_{i=1}^{N} \delta(\mathbf{r}-\mathbf{r_i}) \cdot E^*_i(\omega)
@@ -246,7 +238,7 @@ In this formula \(G(r_i, r_p, \omega) = H_{i\rightarrow p}(\omega)\) represents 
 
 
 \section{The Ray Concept of Electromagnetic waves}
-To calculate the imaging formula we need to know the transfer-function \(H_{i\rightarrow p}(\omega)\) between every receiver and every imaging-point in the target-domain.
+To calculate the imaging formula one needs to know the transfer-function \(H_{i\rightarrow p}(\omega)\) between every receiver and every imaging-point in the target-domain.
 This could be done by full-wave simulations of delta-impulses at the measurement locations.
 These simulations are extremely computationally expensive.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
@@ -255,20 +247,11 @@ The following section will discuss the connection between Maxwell's equations an
 \subsection{Deriving the Eikonal equation from Maxwell's equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
 
-Consider a source-free, isotropic and locally homogenous medium
-\begin{gather}
-    q(\mathbf{r}) = J(\mathbf{r}) = 0 \\
-    \epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r}) \\
-    \mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r}) \\
-    \nabla \cdot D = \epsilon \nabla \cdot E \\
-    \nabla \cdot B = \mu \nabla \cdot H 
-\end{gather}
+Consider a source-free (\(q(\mathbf{r}) = J(\mathbf{r}) = 0\)) and isotropic (\(\epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r})\) and \(\mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r}) \)) medium with no free charges (\(\nabla \cdot E = 0\)).
 Maxwell's equations can then be further simplified to
 \begin{align}
-    \nabla \cdot E &= 0 \\
-    \nabla \cdot H &= 0 \\
-    \nabla \times E &= -\mu \frac{\partial H}{\partial t}\label{electric_curl} \\
-    \nabla \times H &= \epsilon \frac{\partial E}{\partial t}\label{magnetic_curl}
+    \nabla \cdot E &= 0 & \nabla \times E &= -\mu \frac{\partial H}{\partial t}\label{electric_curl} \\
+    \nabla \cdot H &= 0 & \nabla \times H &= \epsilon \frac{\partial E}{\partial t}\label{magnetic_curl}
 \end{align}
 Taking the curl of equation~\eqref{electric_curl} and differentiating~\eqref{magnetic_curl} with respect to time yields
 \begin{align}
@@ -335,38 +318,68 @@ so the unit-ray-vector is a constant and hence the ray is a straight line.
 
 
 \subsection{Refraction and Reflection at plane interfaces}
-At the interference of two homogenous media (\(\Lambda_1\) and \(\Lambda_2\)) with different refractive indices \(n_1\) and \(n_2\), the differential equation of rays must be fulfilled.
-An incident ray with unit-vector \(\mathbf{v}_1\) and the transmitted ray with unit-vector \(\mathbf{v}_2\) therefore satisfy the following conditions at the interface \(\Gamma \).
+At a plane interface \(\Gamma \) of two homogenous media (\(\Lambda_1\) and \(\Lambda_2\)) with different refractive indices \(n_1\) and \(n_2\), the differential equation of rays must be fulfilled.
+An incident ray with unit-vector \(\mathbf{v}_1\) and the transmitted ray with unit-vector \(\mathbf{v}_2\) therefore satisfy the following conditions at any point on the interface.
 \begin{equation}
     n_1 \cdot \mathbf{v}_1 = \nabla \psi|_{r \in \Lambda_1 } \quad n_2 \cdot \mathbf{v}_2 = \nabla \psi|_{r \in \Lambda_2 } 
 \end{equation}
 The closed integral over a gradient field is always zero.
-If a rectangular curve (width \(w\) and height \(h\)) is placed in the plane that is spanned by the incident ray and the normal \(\mathbf{n}\) so that the sides are tangential to \(\Gamma \) and \(h\) goes to zero, the integral of the gradient field must still be zero.
+For any rectangular curve \(C\) (width \(w\) and height \(h\)) where the edges of length \(w\) are tangential to \(\Gamma \) the integral of the gradient field must still be zero.
+The tangential parts of the curve are either in \(\Lambda_1\) or \(\Lambda_2\).
+Taking the limit of \(h \to 0\) then results in~\parencite{born_foundations_1999}
 \begin{equation}
-    \oint \nabla \psi \cdot d\mathbf{r} = \int_{0}^{w} \nabla \psi|_{r \in \Lambda_1 } \cdot \mathbf{t} \, dw + \int_{0}^{w} \nabla \psi|_{r \in \Lambda_1 } \cdot -\mathbf{t} \, dw = 0
+    \lim_{h \to 0} \oint_C \nabla \psi \cdot d\mathbf{r} = \int_{0}^{w} \nabla \psi|_{r \in \Lambda_1 } \cdot \mathbf{t} \, dw' + \int_{0}^{w} \nabla \psi|_{r \in \Lambda_2 } \cdot (-\mathbf{t}) \, dw' = 0
 \end{equation}
 This means that the tangential components of the ray-vectors \(n \cdot \mathbf{v}\) are continuous across the interface.
 \begin{equation}
-    (n_1 \cdot \mathbf{v}_2) \cdot \mathbf{t} = (n_2 \cdot \mathbf{v}_1) \cdot \mathbf{t}
+    (n_2 \mathbf{v}_2 - n_1 \mathbf{v}_1) \cdot \mathbf{t} = 0
 \end{equation}
-Furthermore, as \(\mathbf{t} \times \mathbf{v} = 0\) this implies
+With \(\mathbf{t} = \mathbf{b} \times \mathbf{n}\) where \(\mathbf{n}\) is the normal vector of \(\Gamma \) and \(\mathbf{b}\) is the normal vector of the plane where \(C\) lies this becomes
 \begin{equation}
-    n_1 \cdot (\mathbf{n} \times \mathbf{v}_2) = n_2 \cdot (\mathbf{n} \times \mathbf{v}_1)
+    \mathbf{b} \cdot [\mathbf{n} \times (n_2 \mathbf{v}_2 - n_1 \mathbf{v}_1)] = 0
+\end{equation}
+This equation holds for an arbitrary orientation of the curve \(C\) as long as the edges of length \(w\) are completely in either \(\Lambda_1\) or \(\Lambda_2\).
+This implies that \(\mathbf{b}\) can be chosen arbitrarily as long as \(\mathbf{t} = \mathbf{b} \times \mathbf{n}\) still holds.
+With this in mind and \(\theta_1\),\(\theta_2\) denoting the angles of \(\mathbf{v}_1\),\(\mathbf{v}_2\) with the surface normal \(\mathbf{n}\), Snell's law is retrieved
+\begin{equation}
+    \mathbf{n} \times (n_2\mathbf{v}_2) - \mathbf{n} \times (n_1\mathbf{v}_1) = 0 \quad \Rightarrow \quad n_1 \sin(\theta_1) = n_2 \sin(\theta_2)
+\end{equation}
+
+It is known, that at the transition between two media with different refractive indices there is always a refracted as well as a reflected wave.
+The reflected wave is in the same medium as the incident wave, which leads to the law of specular reflection.
+\begin{equation}
+    \sin(\theta_{inc}) = \sin(\theta_{ref})
 \end{equation}
 
 
+\subsection{Phase and Amplitude propagation along ray-paths}
+According to the definition of the ray-path \(\mathbf{r}(l)\) and the Eikonal equation, the derivation of the phase \(k_0 \cdot \psi(\mathbf{r})\) of a wave along this path is always equal to \(k_0\) times the refractive index \(n(\mathbf{r})\) so the phase propagation can be written as
+\begin{equation}
+    k_0 \cdot \psi(\mathbf{r}(l)) = k_0 \cdot \int_{0}^{l} n(\mathbf{r}(l^{\prime})) \, dl^{\prime}
+\end{equation}
+In a homogenous medium this simplifies to
+\begin{equation}
+    k_0 \cdot \psi(\mathbf{r}(l)) = k_0 \cdot n \cdot l
+\end{equation}
 
-\subsection{Phase propagation along ray-paths}
+The Amplitude on the other hand has a much more complex behavior even along ray-paths.
+For a single point-source in a lossless medium the radiated energy is conserved so the integral over the Poynting-Vector \(S\) over a sphere \(\mathcal{S} \) of radius \(r\) must be independent of \(r\).
+\begin{equation}
+    \int_\mathcal{S}  S \cdot \mathbf{n} \, d\Omega = |S| \cdot 4\pi r^2 = \text{const}
+\end{equation}
+This means, the amplitude of \(S\) is inversely proportional to the square of the distance from the source.
+The amplitude of the Poynting-Vector is furthermore proportional to the amplitude of the electric field squared, which concludes that the amplitude of the electric field is inversely proportional to the distance from the source.
+\begin{equation}
+    |E| \propto \frac{1}{r}
+\end{equation}
+In scenarios like the reflection at interfaces, the amplitude an direction of the electric field vector can be calculated by the Fresnel equations, where the polarization of the field is considered as well.
+For our case it is sufficient to model a reflective surface with a virtual source that is placed in the mirrored position of the original source with respect to the surface, so the reflected ray's amplitude keeps decreasing with \(\frac{1}{l}\), where \(l\) is the distance from the virtual source.
+If the scenario is even more complex, for example curved reflective surfaces, or sharp edges, a more sophisticated model would be needed.
 
-
-
-\subsection{Amplitude propagation along ray-paths}
-
-
-
-
-
-
+With these considerations in mind, the propagation of the electric field along a straight ray-path \(\mathbf{r}(l)\) from a source \(E_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
+\begin{equation}
+    \underline{E}(l) = \frac{1}{l} \cdot E_0 \cdot e^{i k_0 \cdot n \cdot l}
+\end{equation}
 
 
 

@@ -42,7 +42,8 @@
         "latex-workshop.latex.watch.pdf.delay": 2000,
         "cSpell.words": [
             "Eikonal",
-            "Poynting"
+            "Poynting",
+            "Wavefronts"
         ],
     }
 }
