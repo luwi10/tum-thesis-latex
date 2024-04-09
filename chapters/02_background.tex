@@ -5,72 +5,71 @@
 In this chapter, the theoretical background of time-reversal imaging and rays as model for electromagnetic waves according to Maxwell's equations is presented.
 These two concepts are essential for understanding the the time-reversal imaging process proposed in this thesis and its underlying physical principles. 
 
-\section{Time-Reversal of the Electromagnetic Field}
-\subsection{Time-Reversal in physics}
-The evolution of a physical system in time can be described by a curve \(s(t)\) that is moving through a state-space \(\mathbb{P}\).
-When talking about time-reversal in general, one is usually referring to the time-reversal transformation which consists of two components as stated in~\parencite{roberts_reversing_2022}.
-First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
-Secondly, a time-reversal operator has to be applied to each instantaneous state \(s(t) \mapsto \operatorname{T}s(t)\), i.e.\ a ball flying to the right would become a Ball flying to the left.
-This time-reversal operator is reversing for some properties (momentum) and for some properties preserving (kinetic energy).
+\section{Time-reversal of the Electromagnetic Field}
+\subsection{Time-reversal invariance of physical laws}
+The evolution of a physical system in time can be described by a curve \(s(t) \in \mathbb{P}\) that is moving inside a state-space \(\mathbb{P}\).
+This state-space is a high-dimensional space, where each dimension represents a physical property (e.g.~mass, velocity, kinetic energy etc.) of each component of the system.
+It should not be confused with the physical space.
 
+In general the time-reversal transformation consists of two components.\parencite{roberts_reversing_2022}
+First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
+This means, that the sequence of the states is reversed with respect to time.
+Secondly, a time-reversal operator has to be applied to each individual instantaneous state \(s(t) \mapsto \operatorname{T}s(t)\), i.g.\ a ball with velocity to the right would become a ball with velocity to the left.
+The time-reversal operator acts by either reversing (momentum) or preserving (kinetic energy) the properties.
 
 In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\operatorname{T}s(-t)\). 
 
-
-
-\subsection{Time-Reversal invariance of physical laws}
-As mentioned before, the curve \(s(t)\) through the state-space \(\mathbb{P}\) describes the evolution of a physical system in time.
+As mentioned before, the curve \(s(t)\) inside the state-space \(\mathbb{P}\) describes the evolution of a physical system in time.
 This means, \(s(t)\) is a solution to the equations given by the laws that describe the system. 
 A law being time-reversal invariant, therefore implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
 
-For a more hands-on example, imagine filming a ball that is influenced by gravity flying through a vacuum.
+For a more hands-on example, imagine filming a ball that is influenced by gravity while flying through a vacuum.
 Newtons second law \({F}=m \cdot {a}\) is time-reversal invariant. This means the film can be played backwards and the trajectory of the ball will still follow Newtons second law.
-
 An example for a non time-reversal invariant law is the second law of thermodynamics, which states that the entropy of an isolated system never decreases.
 This means, that a film of a gas spreading out in a room played backwards would not comply to this law, as the entropy of the system in the backwards film actually decreases by time.
 
 
 
-\subsection{Time-Reversal invariance of Maxwell's equations}
+\subsection{Time-reversal invariance of Maxwell's equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.
-They relate the electric field \(E\), the electric displacement field \(D\), the magnetic field \(H\) and the magnetic flux density \(B\)  by the following equations, where \(\rho \) and \({J}\) denote the electric charge and current densities.
+They relate the electric field \(\bm{E}\), the electric displacement field \(D\), the magnetic field \(H\) and the magnetic flux density \(B\)  by the following equations, where \(\rho \) and \({J}\) denote the electric charge and current densities.
 \begin{align}\label{eq:maxwell}
-    \nabla \cdot D &= \rho & \nabla \times E &= -\frac{\partial B}{\partial t} \\
+    \nabla \cdot D &= \rho & \nabla \times \bm{E} &= -\frac{\partial B}{\partial t} \\
     \nabla \cdot B &= 0 & \nabla \times H &= J + \frac{\partial D}{\partial t}
 \end{align}
-Generally \(E\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
+Generally \(\bm{E}\) and \(D\) are related by the electric permittivity \(\epsilon \), while \(H\) and \(B\) are related by the magnetic permeability \(\mu \).
 In this paper only time-invariant, reciprocal and anisotropic media are considered, which means that the permittivity \(\epsilon \) and the permeability \(\mu \) are hermitian tensors.~\parencite{krowne_electromagnetic_1984}
-This leads to a reduced form of Maxwell's equations, where the electric field \(E\) and the magnetic field \(H\) are related by
+This leads to a reduced form of Maxwell's equations, where the electric field \(\bm{E}\) and the magnetic field \(H\) are related by
 \begin{align}\label{eq:maxwell_reciprocal}
-    \nabla \cdot (\epsilon E) &= \rho & \nabla \times E &= -\mu \frac{\partial H}{\partial t} \\
-    \nabla \cdot (\mu H) &= 0 & \nabla \times H &= J + \epsilon \frac{\partial E}{\partial t}
+    \nabla \cdot (\epsilon \bm{E}) &= \rho & \nabla \times \bm{E} &= -\mu \frac{\partial H}{\partial t} \\
+    \nabla \cdot (\mu H) &= 0 & \nabla \times H &= J + \epsilon \frac{\partial \bm{E}}{\partial t}
 \end{align}
 
-For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(E\) and \(H\).
+For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\operatorname{T}\) acts on the fields \(\bm{E}\) and \(H\).
 
-Taking into account, that the Poynting vector \(S = E \times H\) is a measure for the energy flow of the electromagnetic field, the time-reversal of these fields has to be chosen in a way that the Poynting vector is reversed as well.
-This means, that either \(E\) or \(H\), but not both, have to be reversed so the Poynting vector changes sign. 
+Taking into account, that the Poynting vector \(S = \bm{E} \times H\) is a measure for the energy flow of the electromagnetic field, the time-reversal of these fields has to be chosen in a way that the Poynting vector is reversed as well.
+This means, that either \(\bm{E}\) or \(H\), but not both, have to be reversed so the Poynting vector changes sign. 
 
 According to \parencite{sigwarth_time_2022} the Maxwell equations remain invariant if the fields and densities are transformed as follows:
 \begin{align}
-    \operatorname{T}E &= E & \operatorname{T}\rho &= \rho \\
+    \operatorname{T}\bm{E} &= \bm{E} & \operatorname{T}\rho &= \rho \\
     \operatorname{T}H &= -H & \operatorname{T}{J} &= -{J}
 \end{align}
 
-An intuitive explanation for this transformation is given by the fact, that the electric field \(E\) is a measure for the force acting on a charge, while the magnetic field \(H\) is a measure for the force acting on a moving charge. 
+An intuitive explanation for this transformation is given by the fact, that the electric field \(\bm{E}\) is a measure for the force acting on a charge, while the magnetic field \(H\) is a measure for the force acting on a moving charge. 
 Accordingly if time is reversed, the direction of the charges will revert and hence the magnetic field should revert. 
 In contrast there is no reason for a positive charge to become a negative charge and vice versa, so the electric field stays the same.
 
 
 
-\subsection{Time-Reversal in the frequency domain}
+\subsection{Time-reversal in the frequency domain}
 With the time-reversal operator defined for all components of Maxwell's equations the time-reversal of the electric and magnetic field in the time domain can now be written as
 \begin{equation}
-    E_{TR}(t) = E(-t) \quad H_{TR}(t) = -H(-t)
+    E_{TR}(t) = \bm{E}(-t) \quad H_{TR}(t) = -H(-t)
 \end{equation}
 The fourier transformation of these equations with \(\mathcal{F}\{X(t)\} = \hat{X}(\omega) = \int X(t) \cdot e^{i\omega t} \, dt\) leads to
 \begin{equation}
-    \hat{E}_{TR}(\omega) = \hat{E}{(\omega)}^* \quad \hat{H}_{TR}(\omega) = -\hat{H}{(\omega)}^*
+    \hat{\bm{E}}_{TR}(\omega) = \hat{\bm{E}}{(\omega)}^* \quad \hat{H}_{TR}(\omega) = -\hat{H}{(\omega)}^*
 \end{equation}
 where \(^*\) denotes the complex conjugate. 
 
@@ -78,7 +77,7 @@ As only fields in the frequency domain will be considered in the following, the 
 
 
 
-\section{Mathematical justification for the Time-Reversal of Electromagnetic waves}\label{sec:math_foundations_em_tr}
+\section{Mathematical justification for the Time-reversal of Electromagnetic waves}\label{sec:math_foundations_em_tr}
 In \parencite{de_rosny_theory_2010} the mathematical groundwork for the time-reversal of electromagnetic waves has been laid out.
 This section won't cover the derivation of their results, but review them as they represent the starting point of mathematical justification for the time-reversal of electromagnetic waves.
 
@@ -87,7 +86,7 @@ The mentioned paper uses two formalisms.
 The electric and magnetic field are combined into the  six-vector \(\psi \) which is defined as
 \begin{equation}
     \psi(\mathbf{r}) = \begin{pmatrix}
-        E(\mathbf{r}) \\
+        \bm{E}(\mathbf{r}) \\
         i H(\mathbf{r})
     \end{pmatrix}
 \end{equation}
@@ -141,7 +140,7 @@ In conclusion \parencite{de_rosny_theory_2010} proves that it is possible to com
 
 
 
-\section{Time-Reversal Imaging}
+\section{Time-reversal Imaging}
 This section is dedicated to the explanation of how time-reversal is used for imaging.
 Imaging is a very broad term and can be applied to many different fields.
 In this thesis, the word imaging is always referring to solving the electromagnetic inverse scattering problem by producing an image of a target domain.
@@ -173,10 +172,10 @@ Time-reversing (complex-conjugating) the measured sources at all the receivers a
     \operatorname{M} \psi_{TR}(\mathbf{r_x}, \omega) = \sum_{j=1}^{M} \operatorname{M} H_{j\rightarrow x}(\omega ) \cdot p_j^*(\omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} \operatorname{M} H_{j\rightarrow x}(\omega) \cdot \operatorname{M}^* H^*_{i\rightarrow j}(\omega) \cdot q^*_i(\omega)
 \end{equation}
 At this point it should be mentioned, that the usage of \(\psi \), \(q\) and the relating measurement operator \(\operatorname{M}\) was chosen for consistency with Section~\ref{sec:math_foundations_em_tr}.
-In most papers about electromagnetic time-reversal only the electric field \(E\) is considered for simplicity.
-Then, by substituting \(E\) for \(\psi \) and describing the sources \(q_i\) by the electric field \(E_i\) they cause at location \(\mathbf{r_i}\) (i.e.~\(\operatorname{M}=1\)), equation~\eqref{signal-time-reversal} becomes
+In most papers about electromagnetic time-reversal only the electric field \(\bm{E}\) is considered for simplicity.
+Then, by substituting \(\bm{E}\) for \(\psi \) and describing the sources \(q_i\) by the electric field \(E_i\) they cause at location \(\mathbf{r_i}\) (i.e.~\(\operatorname{M}=1\)), equation~\eqref{signal-time-reversal} becomes
 \begin{equation}\label{electric-time-reversal}
-    E_{TR}(\mathbf{r_x}, \omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega )  H^*_{i\rightarrow j}(\omega) \cdot E^*_i(\omega)
+    E_{TR}(\mathbf{r_x}, \omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega )  H^*_{i\rightarrow j}(\omega) \cdot \bm{E}^*_i(\omega)
 \end{equation}
 This approach is valid if the receivers are located in the far-field of the sources.
 Here the electric and magnetic fields are orthogonal, so it is sufficient to only keep track of the electric field.
@@ -186,16 +185,16 @@ Furthermore the deduction of an equivalent source \(q_{TR}(\mathbf{r}) = n(\math
         -i J^*(\mathbf{r}) \\
         m^*(\mathbf{r})
     \end{pmatrix} =\left(\begin{array}{c}
-        \frac{i E^*(\mathbf{r})}{\eta} \\
+        \frac{i \bm{E}^*(\mathbf{r})}{\eta} \\
         \eta H^*(\mathbf{r})
         \end{array}\right)
 \end{equation}
 At any source location \(\mathbf{r_k}\) equation~\eqref{electric-time-reversal} becomes
 \begin{equation}\label{electric-time-reversal-source}
-    E_{TR}(\mathbf{r_k}, \omega) = \underbrace{\sum_{j=1}^{M} H_{j\rightarrow k}(\omega) H^*_{k\rightarrow j}(\omega) \cdot E^*_k(\omega)}_{\text{Constructive}} + \underbrace{\sum_{\substack{i=1 \\ i \neq k}}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega ) H^*_{i\rightarrow j}(\omega) \cdot E^*_i(\omega)}_{\text{Destructive}}
+    E_{TR}(\mathbf{r_k}, \omega) = \underbrace{\sum_{j=1}^{M} H_{j\rightarrow k}(\omega) H^*_{k\rightarrow j}(\omega) \cdot \bm{E}^*_k(\omega)}_{\text{Constructive}} + \underbrace{\sum_{\substack{i=1 \\ i \neq k}}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega ) H^*_{i\rightarrow j}(\omega) \cdot \bm{E}^*_i(\omega)}_{\text{Destructive}}
 \end{equation}
 As mentioned before, the system is reciprocal so \(H_{j\rightarrow k}(\omega )= H_{k\rightarrow j}(\omega )\). 
-Therefore the Constructive part is equal to \(|H_k(\omega)|^2 \cdot E^*_k(\omega)\), with
+Therefore the Constructive part is equal to \(|H_k(\omega)|^2 \cdot \bm{E}^*_k(\omega)\), with
 \begin{equation}
     |H_k(\omega)|^2 = \sum_{j=1}^{M} |H_{j\rightarrow k}(\omega)|^2
 \end{equation}
@@ -205,20 +204,20 @@ Conversely the Destructive part is the sum of all cross-terms of the transfer fu
 If~\eqref{electric-time-reversal} is evaluated at any non-source location, no Constructive part will arise, hence the time-reversed signal at this location approaches zero.
 With this in mind one can see how equation~\eqref{electric-time-reversal} approximates the time-reversed active-source distribution. 
 \begin{equation}
-    E_{TR}(\mathbf{r}, \omega) \approx E_{TR-source}(\mathbf{r}, \omega) =  \sum_{i=1}^{N} \delta(\mathbf{r}-\mathbf{r_i}) \cdot E^*_i(\omega)
+    E_{TR}(\mathbf{r}, \omega) \approx E_{TR-source}(\mathbf{r}, \omega) =  \sum_{i=1}^{N} \delta(\mathbf{r}-\mathbf{r_i}) \cdot \bm{E}^*_i(\omega)
 \end{equation}
 
 \subsection{Monochromatic signals}
 Although there are quite promising attempts of improving the imaging from the reconstructed time-reversed field by using time-domain techniques, like a correlation-based criteria~\parencite{li_correlation-based_2021}, the focus of this thesis will remain on the frequency-domain using monochromatic signals.
-These are defined by their amplitude \(|E|\) and phase \(\phi \) at a single frequency \(\omega \) and are usually described by a complex pointer \(\underline{E}(\mathbf{r})\).
+These are defined by their amplitude \(|\bm{E}|\) and phase \(\phi \) at a single frequency \(\omega \) and are usually described by a complex pointer \(\underline{\bm{E}}(\mathbf{r})\).
 \begin{equation}
-    \underline{E}(\mathbf{r}) = |E(\mathbf{r})| \cdot e^{i \phi(\mathbf{r})} = |E(\mathbf{r})| \cdot (\cos(\phi(\mathbf{r})) + i \sin(\phi(\mathbf{r})))
+    \underline{\bm{E}}(\mathbf{r}) = |\bm{E}(\mathbf{r})| \cdot e^{i \phi(\mathbf{r})} = |\bm{E}(\mathbf{r})| \cdot (\cos(\phi(\mathbf{r})) + i \sin(\phi(\mathbf{r})))
 \end{equation}
 The time-domain representation of the signal at location \(\mathbf{r}\) is retrieved by taking the real part of the product of the pointer and \(e^{i \omega t}\).
 \begin{equation}
-    E(\mathbf{r}, t) = \Re \{\underline{E}(\mathbf{r}) \cdot e^{i \omega t}\} = |E(\mathbf{r})| \cdot \cos(\phi(\mathbf{r}) + \omega t)
+    \bm{E}(\mathbf{r}, t) = \Re \{\underline{\bm{E}}(\mathbf{r}) \cdot e^{i \omega t}\} = |\bm{E}(\mathbf{r})| \cdot \cos(\phi(\mathbf{r}) + \omega t)
 \end{equation}
-For the pointer \(\underline{E}(\mathbf{r})\) the time-reversal operator \(\operatorname{T}\) is simply a reflection along the real axis or (in mathematical terms) a negation of the phase.
+For the pointer \(\underline{\bm{E}}(\mathbf{r})\) the time-reversal operator \(\operatorname{T}\) is simply a reflection along the real axis or (in mathematical terms) a negation of the phase.
 
 The propagation of a monochromatic wave-signal along a straight line through a system can be modelled by the pointer rotating counter-clockwise in the complex plane.
 How far the pointer is rotated is given by the phase of the system's transfer function \(H(\mathbf{r_{source}}, \mathbf{r})\).
@@ -247,24 +246,24 @@ The following section will discuss the connection between Maxwell's equations an
 \subsection{Deriving the Eikonal equation from Maxwell's equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
 
-Consider a source-free (\(q(\mathbf{r}) = J(\mathbf{r}) = 0\)) and isotropic (\(\epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r})\) and \(\mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r}) \)) medium with no free charges (\(\nabla \cdot E = 0\)).
+Consider a source-free (\(q(\mathbf{r}) = J(\mathbf{r}) = 0\)) and isotropic (\(\epsilon(\mathbf{r}) = \epsilon_0 \cdot \epsilon_r(\mathbf{r})\) and \(\mu(\mathbf{r}) = \mu_0 \cdot \mu_r(\mathbf{r}) \)) medium with no free charges (\(\nabla \cdot \bm{E} = 0\)).
 Maxwell's equations can then be further simplified to
 \begin{align}
-    \nabla \cdot E &= 0 & \nabla \times E &= -\mu \frac{\partial H}{\partial t}\label{electric_curl} \\
-    \nabla \cdot H &= 0 & \nabla \times H &= \epsilon \frac{\partial E}{\partial t}\label{magnetic_curl}
+    \nabla \cdot \bm{E} &= 0 & \nabla \times \bm{E} &= -\mu \frac{\partial H}{\partial t}\label{electric_curl} \\
+    \nabla \cdot H &= 0 & \nabla \times H &= \epsilon \frac{\partial \bm{E}}{\partial t}\label{magnetic_curl}
 \end{align}
 Taking the curl of equation~\eqref{electric_curl} and differentiating~\eqref{magnetic_curl} with respect to time yields
 \begin{align}
-    \nabla \times (\nabla \times E) &= -\mu (\frac{\partial}{\partial t} \nabla \times H) \\
-    \frac{\partial}{\partial t} \nabla \times H &= \epsilon \frac{\partial}{\partial t^2} E
+    \nabla \times (\nabla \times \bm{E}) &= -\mu (\frac{\partial}{\partial t} \nabla \times H) \\
+    \frac{\partial}{\partial t} \nabla \times H &= \epsilon \frac{\partial}{\partial t^2} \bm{E}
 \end{align}
 Substituting the second equation into the first one results in
 \begin{equation}
-    \nabla \times (\nabla \times E) = \mu \epsilon \frac{\partial^2}{\partial t^2} E
+    \nabla \times (\nabla \times \bm{E}) = \mu \epsilon \frac{\partial^2}{\partial t^2} \bm{E}
 \end{equation}
 Finally, using Green's vector identity (\(\nabla \times (\nabla \times A) = \nabla(\nabla \cdot A) - \nabla^2 A\)) the wave equation for the electric field is obtained, where \(\nabla^2\) denotes the componential Laplacian operator.
 \begin{equation}
-    \nabla^2 E + \mu \epsilon \frac{\partial^2}{\partial t^2} E = 0
+    \nabla^2 \bm{E} + \mu \epsilon \frac{\partial^2}{\partial t^2} \bm{E} = 0
 \end{equation}
 The same equation can be derived for the magnetic field and holds for each single component \(\phi \) of both fields.
 For monochromatic waves of frequency \(\omega \) it can be written in the frequency domain as
@@ -370,7 +369,7 @@ For a single point-source in a lossless medium the radiated energy is conserved 
 This means, the amplitude of \(S\) is inversely proportional to the square of the distance from the source.
 The amplitude of the Poynting-Vector is furthermore proportional to the amplitude of the electric field squared, which concludes that the amplitude of the electric field is inversely proportional to the distance from the source.
 \begin{equation}
-    |E| \propto \frac{1}{r}
+    |\bm{E}| \propto \frac{1}{r}
 \end{equation}
 In scenarios like the reflection at interfaces, the amplitude and direction of the electric field vector can be calculated by the Fresnel equations, where the polarization of the field is considered as well.
 For our case it is sufficient to model a reflective surface with a virtual source that is placed in the mirrored position of the original source with respect to the surface, so the reflected ray's amplitude keeps decreasing with \(\frac{1}{l}\), where \(l\) is the distance from the virtual source.
@@ -378,7 +377,7 @@ If the scenario is even more complex, for example curved reflective surfaces, or
 
 With these considerations in mind, the propagation of the electric field along a straight ray-path \(\mathbf{r}(l)\) from a source \(E_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
 \begin{equation}
-    \underline{E}(l) = \frac{1}{l} \cdot E_0 \cdot e^{i k_0 \cdot n \cdot l}
+    \underline{\bm{E}}(l) = \frac{1}{l} \cdot E_0 \cdot e^{i k_0 \cdot n \cdot l}
 \end{equation}
 
 
