@@ -15,7 +15,7 @@ The time-reversal imaging algorithm is a three-step process.
 First, the scene is illuminated with a monochromatic signal of frequency \(\omega_i\) and the resulting scattered field is recorded at \(M\) receiver locations \(\mathbf{r}_j\). 
 This step is repeated for \(N\) frequencies \(\omega_i\) resulting in the \(N \times M\) matrix \(\mathsf{S} \) containing the scattered field at all receiver locations for all frequencies.
 
-In the second step, a random location in the target domain is chosen as the source of a big number of rays (\(N_{\text{rays}}\approx 10^{10}\)) which are launched into all directions.
+In the second step, a random location in the target domain is chosen as the source of a big number of rays (\(N_{\text{rays}}\approx 10^{10}\)) which are launched into random directions.
 A ray that follows a possible path from the target location to a receiver location will eventually hit the receiver so the path can be recorded.
 From these paths, the paths for the other locations in the target domain can be derived.
 This is further described in Section~\ref{section:virtual_targets}.
@@ -29,7 +29,7 @@ This can be summarized in the final imaging formula
     I(\mathbf{r}_k) = \sum_{i=1}^{N} \sum_{j=1}^{M} \mathsf{S}_{ij} \cdot H_{j \rightarrow k}(\omega_i)
 \end{equation}
 where \(H_{j \rightarrow k}(\omega_i )\) is the superposition of the transfer functions of all paths from receiver \(k\) to target location \(\mathbf{r}_j\) at frequency \(\omega_i\).
-These transfer functions are calculated by tracing a ray along the path.
+These transfer functions are calculated by tracing rays along the paths.
 This is combined with a subdivision into wavefronts, which is described in Section~\ref{section:subdivision_into_wavefronts}.
 
 
@@ -60,8 +60,7 @@ This would lead to an unwanted increased influence of this path in the time-reve
 To resolve this issue, every ray has an associated hash value that is calculated from the path it takes, i.e.~from the object-ID's of the plane surfaces it bounces of and the receiver it finally hits.
 This way it can be checked if a virtual target for this path has already been recorded, as every path has an unique hash value.
 
-Furthermore equation~\eqref{eq:visual_target} is only an approximation of a perfect virtual target.
-This would be retrieved by mirroring the receiver location at the plane surfaces the ray hits in a backwards manner.
+Furthermore equation~\eqref{eq:visual_target} is only an approximation of a perfect virtual target, which would be retrieved by mirroring the receiver location at the plane surfaces the ray hits in a backwards manner.
 For the sake of simplicity, this is not done in the implementation.
 Instead the center of the sphere \(\mathbf{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path.
 \begin{equation}
@@ -69,3 +68,10 @@ Instead the center of the sphere \(\mathbf{r}_{\text{receiver}}\) is projected o
 \end{equation}
 
 \section{Subdivision into wavefronts}\label{section:subdivision_into_wavefronts}
+
+The virtual targets recorded in the preceding step are mirrored versions of the receiver locations.
+By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be simulated.
+A subset of virtual targets which accounts for one mirrored version of all receiver locations is called a wavefront.
+There are as many wavefronts as there are different paths from one receiver to the probe point.
+The virtual targets are mapped to the wavefronts by the hash value of the ray before including the hit receivers object-ID into the hash calculation.
+This way, the wavefronts are characterized by the sequence of plane surfaces the rays reflect of.
