@@ -32,17 +32,31 @@ This means, that a film of a gas spreading out in a room played backwards would 
 
 \subsection{Time-reversal invariance of Maxwell's equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.
-They relate the electric field \(\bm{E}\), the electric displacement field \(\bm{D}\), the magnetic field \(\bm{H}\) and the magnetic flux density \(\bm{B}\)  by the following equations, where \(\rho \) and \({\bm{J}}\) denote the electric charge and current densities
-\begin{align}\label{eq:maxwell}
-    \nabla \cdot \bm{D} &= \rho & \nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial t} \\
-    \nabla \cdot \bm{B} &= 0 & \nabla \times \bm{H} &= \bm{J} + \frac{\partial \bm{D}}{\partial t}
+They relate the electric field \(\bm{E}\), the electric displacement field \(\bm{D}\), the magnetic field \(\bm{H}\) and the magnetic flux density \(\bm{B}\)  by the following equations, where \(\rho \) and \({\bm{J}}\) denote the electric charge and current densities:
+\begin{align}
+    \begin{split}
+        \nabla \cdot \bm{D} &= \rho \\
+        \nabla \times \bm{E} &= -\frac{\partial \bm{B}}{\partial t}
+    \end{split}
+    &
+    \begin{split}
+        \nabla \cdot \bm{B} &= 0 \\
+        \nabla \times \bm{H} &= \bm{J} + \frac{\partial \bm{D}}{\partial t}
+    \end{split}
 \end{align}
 Generally \(\bm{E}\) and \(\bm{D}\) are related by the electric permittivity \(\varepsilon \), while \(\bm{H}\) and \(\bm{B}\) are related by the magnetic permeability \(\mu \).
 In this paper only time-invariant, reciprocal and anisotropic media are considered, which means that the permittivity \(\varepsilon \) and the permeability \(\mu \) are hermitian tensors~\parencite{krowne_electromagnetic_1984}.
 This leads to a reduced form of Maxwell's equations, where the electric field \(\bm{E}\) and the magnetic field \(\bm{H}\) are related by
-\begin{align}\label{eq:maxwell_reciprocal}
-    \nabla \cdot (\varepsilon \bm{E}) &= \rho & \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t} \\
-    \nabla \cdot (\mu \bm{H}) &= 0 & \nabla \times \bm{H} &= \bm{J} + \varepsilon \frac{\partial \bm{E}}{\partial t}
+\begin{align}
+    \begin{split}
+        \nabla \cdot (\varepsilon \bm{E}) &= \rho \\
+        \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t}
+    \end{split}
+    &
+    \begin{split}
+        \nabla \cdot (\mu \bm{H}) &= 0 \\
+        \nabla \times \bm{H} &= \bm{J} + \varepsilon \frac{\partial \bm{E}}{\partial t}
+    \end{split}
 \end{align}
 
 For the time-reversal of these equations, one first has to understand, how the time-reversal operator \(\mathcal{T}\) acts on the fields \(\bm{E}\) and \(\bm{H}\).
@@ -50,8 +64,15 @@ Taking into account, that the Poynting vector \(\bm{S} = \bm{E} \times \bm{H}\) 
 This means, that either \(\bm{E}\) or \(\bm{H}\), but not both, have to be reversed so the Poynting vector changes sign. 
 The Maxwell equations remain invariant if the fields and densities are transformed as follows~\parencite{sigwarth_time_2022}:
 \begin{align}
-    \mathcal{T}\bm{E} &= \bm{E} & \mathcal{T}\rho &= \rho \\
-    \mathcal{T}\bm{H} &= -\bm{H} & \mathcal{T}{\bm{J}} &= -{\bm{J}}
+    \begin{split}
+        \mathcal{T}\bm{E} &= \bm{E} \\
+        \mathcal{T}\rho &= \rho \\
+    \end{split}
+    &
+    \begin{split}
+        \mathcal{T}\bm{H} &= -\bm{H} \\
+        \mathcal{T}{\bm{J}} &= -{\bm{J}}
+    \end{split}
 \end{align}
 
 An intuitive but not rigorous explanation for this transformation is given by the fact, that the electric field is a measure for the force acting on a charge, while the magnetic field is a measure for the force acting on a moving charge. 
@@ -63,7 +84,7 @@ With the time-reversal operator defined for all components of Maxwell's equation
 \begin{equation}
     \bm{E}_{\text{TR}}(t) = \bm{E}(-t) \quad \bm{H}_{\text{TR}}(t) = -\bm{H}(-t)
 \end{equation}
-The fourier transformation of these equations with \(\mathcal{F}\{X(t)\} = \hat{X}(\omega) = \int X(t) \cdot \mathrm{e}^{i\omega t} \, dt\) leads to
+The fourier transformation of these equations with \(\mathcal{F}\{X(t)\} = \hat{X}(\omega) = \int X(t) \cdot \mathrm{e}^{\mathrm{i}\omega t} \, dt\) leads to
 \begin{equation}
     \hat{\bm{E}}_{\text{TR}}(\omega) = \hat{\bm{E}}{(\omega)}^* \quad \hat{\bm{H}}_{\text{TR}}(\omega) = -\hat{\bm{H}}{(\omega)}^*
 \end{equation}
@@ -83,13 +104,13 @@ The electric and magnetic field are combined into the  six-vector \(\psi \) whic
 \begin{equation}
     \psi(\bm{r}) = \begin{pmatrix}
         \bm{E}(\bm{r}) \\
-        i \bm{H}(\bm{r})
+        \mathrm{i} \bm{H}(\bm{r})
     \end{pmatrix}
 \end{equation}
 and a source vector \(q\) is defined as
 \begin{equation}
     q(\bm{r}) = \begin{pmatrix}
-        -i \bm{J}(\bm{r}) \\
+        -\mathrm{i} \bm{J}(\bm{r}) \\
         m(\bm{r})
     \end{pmatrix}
 \end{equation}
@@ -145,47 +166,47 @@ Here the focus is on the localization of passive targets, which are scatterers t
 This problem is closely related to active-source localization, as the scattered field produced by passive targets can be interpreted as the radiated field from an induced source.~\parencite{chen_computational_2018}
 
 \subsection{Active-Source localization}
-Assuming that \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\bm{r_i}\), the source-distribution \(q(\bm{r}, \omega)\) is obtained, with \(\delta(\bm{r}) \) denoting the dirac delta-function.
+Assuming that \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\bm{r}_i\), the source-distribution \(q(\bm{r}, \omega)\) is obtained, with \(\delta(\bm{r}) \) denoting the dirac delta-function.
 \begin{equation}
-    q(\bm{r}, \omega) = \sum_{i=1}^{N} \delta(\bm{r} - \bm{r_i}) \cdot q_i(\omega)
+    q(\bm{r}, \omega) = \sum_{i=1}^{N} \delta(\bm{r} - \bm{r}_i) \cdot q_i(\omega)
 \end{equation}
 To explain how the described time-reversal process can be used for active-source localization, a signal theory approach is taken.
 To do this the medium is modelled as a reciprocal LTI-System.
-Now the propagation of an electromagnetic wave-signal \(\psi(\bm{r}, \omega )\) from a source \(q_a(\omega )\) at \(\bm{r_a}\) to a receiver at \(\bm{r_b}\) can be reduced to a simple input-output system with the transfer function \(H_{a\rightarrow b}(\omega) = G(\bm{r_a}, \bm{r_b}, \omega)\).
+Now the propagation of an electromagnetic wave-signal \(\psi(\bm{r}, \omega )\) from a source \(q_a(\omega )\) at \(\bm{r}_a\) to a receiver at \(\bm{r}_b\) can be reduced to a simple input-output system with the transfer function \(H_{a\rightarrow b}(\omega) = G(\bm{r}_a, \bm{r}_b, \omega)\).
 \begin{equation}
-    \psi(\bm{r_b}, \omega) = H_{a\rightarrow b}(\omega) \cdot q_a(\omega)
+    \psi(\bm{r}_b, \omega) = H_{a\rightarrow b}(\omega) \cdot q_a(\omega)
 \end{equation}
 This can be applied to the whole source distribution \(q(\bm{r}, \omega)\) to obtain the wave-signal at the receiver \(\bm{j}\).
 \begin{equation}
     \psi(\bm{r_j}, \omega) = \sum_{i=1}^{N} H_{i\rightarrow j}(\omega) \cdot q_i(\omega)
 \end{equation}
-From this wave-signal, an equivalent source \(p_j(\omega)\) can be deduced by applying the measurement operator \(\mathcal{M}\). This is done at all \(M\) receivers at the locations \(\bm{r_j}\).  
+From this wave-signal, an equivalent source \(p_j(\omega)\) can be deduced by applying the measurement operator \(\mathcal{M}\). This is done at all \(M\) receivers at the locations \(\bm{r}_j\).  
 \begin{equation}
-    p_j(\omega) = \mathcal{M} \psi(\bm{r_j}, \omega)
+    p_j(\omega) = \mathcal{M} \psi(\bm{r}_j, \omega)
 \end{equation}
-Time-reversing (complex-conjugating) the measured sources at all the receivers and remitting them will result in the wave-signal distribution \(\psi_{\text{TR}}(\bm{r_x}, \omega)\) which is again measured with \(\mathcal{M}\)
+Time-reversing (complex-conjugating) the measured sources at all the receivers and remitting them will result in the wave-signal distribution \(\psi_{\text{TR}}(\bm{r}_x, \omega)\) which is again measured with \(\mathcal{M}\)
 \begin{equation}\label{signal-time-reversal}
-    \mathcal{M} \psi_{\text{TR}}(\bm{r_x}, \omega) = \sum_{j=1}^{M} \mathcal{M} H_{j\rightarrow x}(\omega ) \cdot p_j^*(\omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} \mathcal{M} H_{j\rightarrow x}(\omega) \cdot \mathcal{M}^* \bm{H}^*_{i\rightarrow j}(\omega) \cdot q^*_i(\omega)
+    \mathcal{M} \psi_{\text{TR}}(\bm{r}_x, \omega) = \sum_{j=1}^{M} \mathcal{M} H_{j\rightarrow x}(\omega ) \cdot p_j^*(\omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} \mathcal{M} H_{j\rightarrow x}(\omega) \cdot \mathcal{M}^* \bm{H}^*_{i\rightarrow j}(\omega) \cdot q^*_i(\omega)
 \end{equation}
 At this point it should be mentioned, that the usage of \(\psi \), \(q\) and the relating measurement operator \(\mathcal{M}\) was chosen for consistency with Section~\ref{sec:math_foundations_em_tr}.
 In most papers about electromagnetic time-reversal only the electric field \(\bm{E}\) is considered for simplicity.
-Then, by substituting \(\bm{E}\) for \(\psi \) and describing the sources \(q_i\) by the electric field \(\bm{E}_i\) they cause at location \(\bm{r_i}\) (i.e.~\(\mathcal{M}=1\)), equation~\eqref{signal-time-reversal} becomes
+Then, by substituting \(\bm{E}\) for \(\psi \) and describing the sources \(q_i\) by the electric field \(\bm{E}_i\) they cause at location \(\bm{r}_i\) (i.e.~\(\mathcal{M}=1\)), equation~\eqref{signal-time-reversal} becomes
 \begin{equation}\label{electric-time-reversal}
-    \bm{E}_{\text{TR}}(\bm{r_x}, \omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega )  \bm{H}^*_{i\rightarrow j}(\omega) \cdot \bm{E}^*_i(\omega)
+    \bm{E}_{\text{TR}}(\bm{r}_x, \omega) = \sum_{j=1}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega )  \bm{H}^*_{i\rightarrow j}(\omega) \cdot \bm{E}^*_i(\omega)
 \end{equation}
 This approach is valid if the receivers are located in the far-field of the sources.
 Here the electric and magnetic fields are orthogonal, so it is sufficient to only keep track of the electric field.
-Furthermore the deduction of an equivalent source \(q_{\text{TR}}(\bm{r}) = n(\bm{r}) \times \psi^*(\bm{r})\) can be simplified so the electric and magnetic current densities are proportional to the electric and magnetic field respectively~\parencite{de_rosny_theory_2010}
+Furthermore the deduction of an equivalent source \(q_{\text{TR}}(\bm{r}) = n(\bm{r}) \times \psi^*(\bm{r})\) can be simplified so the electric and magnetic current densities are proportional to the electric and magnetic field respectively~\parencite{de_rosny_theory_2010}:
 \begin{equation}
     q_{T R}(\bm{r})= \begin{pmatrix}
-        -i \bm{J}^*(\bm{r}) \\
+        -\mathrm{i} \bm{J}^*(\bm{r}) \\
         m^*(\bm{r})
     \end{pmatrix} =\left(\begin{array}{c}
-        i \bm{E}^*(\bm{r}) / \eta \\
+        \mathrm{i} \bm{E}^*(\bm{r}) / \eta \\
         \eta \bm{H}^*(\bm{r})
         \end{array}\right)
 \end{equation}
-At any source location \(\bm{r_k}\) equation~\eqref{electric-time-reversal} becomes
+At any source location \(\bm{r}_k\) equation~\eqref{electric-time-reversal} becomes
 \begin{equation}\label{electric-time-reversal-source}
     \bm{E}_{\text{TR}}(\bm{r_k}, \omega) = \underbrace{\sum_{j=1}^{M} H_{j\rightarrow k}(\omega) \bm{H}^*_{k\rightarrow j}(\omega) \cdot \bm{E}^*_k(\omega)}_{\text{Constructive}} + \underbrace{\sum_{\substack{i=1 \\ i \neq k}}^{M} \sum_{i=1}^{N} H_{j\rightarrow x}(\omega ) \bm{H}^*_{i\rightarrow j}(\omega) \cdot \bm{E}^*_i(\omega)}_{\text{Destructive}}
 \end{equation}
@@ -207,11 +228,11 @@ With this in mind one can see how equation~\eqref{electric-time-reversal} approx
 Although there are quite promising attempts of improving the imaging from the reconstructed time-reversed field by using time-domain techniques, like a correlation-based criteria~\parencite{li_correlation-based_2021}, the focus of this thesis will remain on the frequency-domain using monochromatic signals.
 These are defined by their amplitude \(|\bm{E}|\) and phase \(\phi \) at a single frequency \(\omega \) and are usually described by a complex phasor \(\underline{\bm{E}}(\bm{r})\).
 \begin{equation}
-    \underline{\bm{E}}(\bm{r}) = |\bm{E}(\bm{r})| \cdot \mathrm{e}^{i \phi(\bm{r})} = |\bm{E}(\bm{r})| \cdot (\cos(\phi(\bm{r})) + i \sin(\phi(\bm{r})))
+    \underline{\bm{E}}(\bm{r}) = |\bm{E}(\bm{r})| \cdot \mathrm{e}^{\mathrm{i} \phi(\bm{r})} = |\bm{E}(\bm{r})| \cdot (\cos(\phi(\bm{r})) + \mathrm{i} \sin(\phi(\bm{r})))
 \end{equation}
-The time-domain representation of the signal at location \(\bm{r}\) is retrieved by taking the real part of the product of the phasor and \(\mathrm{e}^{i \omega t}\).
+The time-domain representation of the signal at location \(\bm{r}\) is retrieved by taking the real part of the product of the phasor and \(\mathrm{e}^{\mathrm{i} \omega t}\).
 \begin{equation}
-    \bm{E}(\bm{r}, t) = \Re \{\underline{\bm{E}}(\bm{r}) \cdot \mathrm{e}^{i \omega t}\} = |\bm{E}(\bm{r})| \cdot \cos(\phi(\bm{r}) + \omega t)
+    \bm{E}(\bm{r}, t) = \Re \{\underline{\bm{E}}(\bm{r}) \cdot \mathrm{e}^{\mathrm{i} \omega t}\} = |\bm{E}(\bm{r})| \cdot \cos(\phi(\bm{r}) + \omega t)
 \end{equation}
 For the phasor \(\underline{\bm{E}}(\bm{r})\) the time-reversal operator \(\mathcal{T}\) is simply a reflection along the real axis or (in mathematical terms) a negation of the phase.
 
@@ -244,34 +265,37 @@ The following argumentation is based on~\parencite{born_geometrische_1933} and~\
 
 Consider a source-free (\(q(\bm{r}) = \bm{J}(\bm{r}) = 0\)) and isotropic (\(\varepsilon(\bm{r}) = \varepsilon_0 \cdot \varepsilon_r(\bm{r})\) and \(\mu(\bm{r}) = \mu_0 \cdot \mu_r(\bm{r}) \)) medium with no free charges (\(\nabla \cdot \bm{E} = 0\)).
 Maxwell's equations can then be further simplified to
-\begin{align}
-    \nabla \cdot \bm{E} &= 0 & \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t}\label{electric_curl} \\
-    \nabla \cdot \bm{H} &= 0 & \nabla \times \bm{H} &= \varepsilon \frac{\partial \bm{E}}{\partial t}\label{magnetic_curl}
-\end{align}
-Taking the curl of equation~\eqref{electric_curl} and differentiating~\eqref{magnetic_curl} with respect to time yields
+\makeatletter
+\newcommand\Label[1]{&\refstepcounter{equation}(\theequation)\ltx@label{#1}&}
+\makeatother
+\begin{align*}
+    \nabla \cdot \bm{E} &= 0 \Label{eq:electric_divergence} & \nabla \cdot \bm{H} &= 0 \Label{eq:magentic_divergence}\\
+    \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t} \Label{eq:electric_curl} & \nabla \times \bm{H} &= \varepsilon \frac{\partial \bm{E}}{\partial t}\Label{eq:magnetic_curl}
+\end{align*}
+Taking the curl of equation~\eqref{eq:electric_curl} and differentiating~\eqref{eq:magnetic_curl} with respect to time yields
 \begin{align}
     \nabla \times (\nabla \times \bm{E}) &= -\mu (\frac{\partial}{\partial t} \nabla \times \bm{H}) \\
     \frac{\partial}{\partial t} \nabla \times \bm{H} &= \varepsilon \frac{\partial}{\partial t^2} \bm{E}
 \end{align}
 Substituting the second equation into the first one results in
 \begin{equation}
-    \nabla \times (\nabla \times \bm{E}) = \mu \varepsilon \frac{\partial^2}{\partial t^2} \bm{E}
+    \nabla \times (\nabla \times \bm{E}) = -\mu \varepsilon \frac{\partial^2}{\partial t^2} \bm{E}
 \end{equation}
 Finally, using Green's vector identity (\(\nabla \times (\nabla \times A) = \nabla(\nabla \cdot A) - \nabla^2 A\)) the wave equation for the electric field is obtained, where \(\nabla^2\) denotes the componential Laplacian operator.
 \begin{equation}
-    \nabla^2 \bm{E} + \mu \varepsilon \frac{\partial^2}{\partial t^2} \bm{E} = 0
+    \nabla^2 \bm{E} - \mu \varepsilon \frac{\partial^2}{\partial t^2} \bm{E} = 0
 \end{equation}
 The same equation can be derived for the magnetic field and holds for each single component \(\phi \) of both fields.
 For monochromatic waves of frequency \(\omega \) it can be written in the frequency domain as
 \begin{equation}\label{electromagnetic_wave_equation}
-    \nabla^2 \phi(\bm{r}) - k_0^2\ n{(\bm{r})}^2 \cdot \phi(\bm{r}) = 0
+    \nabla^2 \phi(\bm{r}) + k_0^2\ n{(\bm{r})}^2 \cdot \phi(\bm{r}) = 0
 \end{equation}
 with \(k_0 = \omega \sqrt{\mu_0 \varepsilon_0} \) denoting the vacuum wave-number and \(n(\bm{r}) = \sqrt{\varepsilon_r(\bm{r}) \mu_r(\bm{r})}\) denoting the refractive index of the medium.
 
-For a monochromatic wave of frequency \(\omega \) the components \(\phi(\bm{r})\) can be described by the complex phasor \(\underline{\phi}(\bm{r}) = A(\bm{r}) \cdot \mathrm{e}^{i k_0 \cdot \psi(\bm{r})}\) with amplitude \(A(\bm{r})\) and phase \(k_0 \cdot \psi(\bm{r})\).
+For a monochromatic wave of frequency \(\omega \) the components \(\phi(\bm{r})\) can be described by the complex phasor \(\underline{\phi}(\bm{r}) = A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot \psi(\bm{r})}\) with amplitude \(A(\bm{r})\) and phase \(k_0 \cdot \psi(\bm{r})\).
 Equation~\eqref{electromagnetic_wave_equation} then converts to 
 \begin{equation}\label{electromagnetic_wave_equation_complex}
-    \nabla^2 A(\bm{r}) + 2ik_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) + k_0^2 A(\bm{r}) \cdot ({n(\bm{r})}^2 - {(\nabla \psi(\bm{r}))}^2) = 0
+    \nabla^2 A(\bm{r}) + 2\mathrm{i}k_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) + k_0^2 A(\bm{r}) \cdot ({n(\bm{r})}^2 - {(\nabla \psi(\bm{r}))}^2) = 0
 \end{equation}
 with a more detailed derivation in~\ref{derivation}
 
@@ -371,27 +395,26 @@ If the scenario is even more complex, for example curved reflective surfaces, or
 
 With these considerations in mind, the propagation of the electric field along a straight ray-path \(\bm{r}(l)\) from a source \(E_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
 \begin{equation}
-    \underline{\bm{E}}(l) = \frac{1}{l} \cdot E_0 \cdot \mathrm{e}^{i k_0 \cdot n \cdot l}
+    \underline{\bm{E}}(l) = \frac{1}{l} \cdot E_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
 \end{equation}
 
 
 
 
 \subsubsection{Derivation}\label{derivation}
-
 Consider these identities
 \begin{align}
     \nabla^2 (a \cdot b) &= \nabla^2 a \cdot b + 2 (\nabla a \nabla b) + a \nabla^2 b, \\
-    \nabla \mathrm{e}^{i k_0 \cdot \psi(\bm{r})} &= i k_0 \cdot \nabla \psi(\bm{r}) \cdot \mathrm{e}^{i k_0 \cdot \psi(\bm{r})}, \\
-    \nabla^2 \mathrm{e}^{i k_0 \cdot \psi(\bm{r})} &= - k_0^2 \cdot {(\nabla \psi(\bm{r}))}^2 \cdot \mathrm{e}^{i k_0 \cdot \psi(\bm{r})}.
+    \nabla \mathrm{e}^{\mathrm{i} k_0 \cdot \psi(\bm{r})} &= i k_0 \cdot \nabla \psi(\bm{r}) \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot \psi(\bm{r})}, \\
+    \nabla^2 \mathrm{e}^{\mathrm{i} k_0 \cdot \psi(\bm{r})} &= - k_0^2 \cdot {(\nabla \psi(\bm{r}))}^2 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot \psi(\bm{r})}.
 \end{align}
 which lead to
 \begin{gather}
-    \nabla^2 (A(\bm{r}) \cdot \mathrm{e}^{ik_0 \cdot \psi(\bm{r})}) \\
-    = (\nabla^2 A(\bm{r}) + 2ik_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) - k_0^2 \cdot (\nabla \psi(\bm{r}))) \cdot \mathrm{e}^{ik_0 \cdot \psi(\bm{r})}
+    \nabla^2 (A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}) \\
+    = (\nabla^2 A(\bm{r}) + 2\mathrm{i}k_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) - k_0^2 \cdot (\nabla \psi(\bm{r}))) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}
 \end{gather}
-This results in the following equivalence (\(\underline{\phi}(\bm{r}) = A(\bm{r}) \cdot \mathrm{e}^{ik_0 \cdot \psi(\bm{r})}\))
+This results in the following equivalence (\(\underline{\phi}(\bm{r}) = A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}\))
 \begin{gather}
     \nabla^2 \underline{\phi}(\bm{r}) + k_0^2\ n{(\bm{r})}^2 \cdot \underline{\phi}(\bm{r}) \stackrel{!}{=} 0, \\
-    \Leftrightarrow \nabla^2 A(\bm{r}) + 2ik_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) + k_0^2 A(\bm{r}) \cdot ({n(\bm{r})}^2 - {(\nabla \psi(\bm{r}))}^2) \stackrel{!}{=} 0.
+    \Leftrightarrow \nabla^2 A(\bm{r}) + 2\mathrm{i}k_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) + k_0^2 A(\bm{r}) \cdot ({n(\bm{r})}^2 - {(\nabla \psi(\bm{r}))}^2) \stackrel{!}{=} 0.
 \end{gather}
