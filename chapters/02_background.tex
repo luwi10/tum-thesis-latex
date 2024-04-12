@@ -5,8 +5,8 @@
 In this chapter, the theoretical background of time-reversal imaging and rays as model for electromagnetic waves according to Maxwell's equations is presented.
 These two concepts are essential for understanding the the time-reversal imaging process proposed in this thesis and its underlying physical principles. 
 
-\section{Time-reversal of the electromagnetic field}
-\subsection{Time-reversal invariance of physical laws}
+\section{Time-Reversal of the Electromagnetic Field}
+\subsection{Time-Reversal Invariance of Physical Laws}
 The evolution of a physical system in time can be described by a curve \(s(t) \in \mathbb{P}\) that is moving inside a state-space \(\mathbb{P}\).
 This state-space is a high-dimensional space, where each dimension represents a physical property (e.g.~mass, velocity, kinetic energy etc.) of each component of the system.
 It should not be confused with the physical space.
@@ -30,7 +30,7 @@ This means, that a film of a gas spreading out in a room played backwards would 
 
 
 
-\subsection{Time-reversal invariance of Maxwell's equations}
+\subsection{Time-Reversal Invariance of Maxwell's Equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.
 They relate the electric field \(\bm{E}\), the electric displacement field \(\bm{D}\), the magnetic field \(\bm{H}\) and the magnetic flux density \(\bm{B}\)  by the following equations, where \(\rho \) and \({\bm{J}}\) denote the electric charge and current densities:
 \begin{align}
@@ -94,11 +94,11 @@ As only fields in the frequency domain will be considered in the following, the 
 
 
 
-\section{Reciprocity and time-reversal}\label{sec:math_foundations_em_tr}
+\section{Reciprocity and Time-Reversal}\label{sec:math_foundations_em_tr}
 In \parencite{de_rosny_theory_2010} the mathematical groundwork for the time-reversal of electromagnetic waves has been laid out.
 This section won't cover the derivation of their results, but review them as they represent the starting point of mathematical justification for the time-reversal of electromagnetic waves.
 
-\subsection{The six-vector formalism}
+\subsection{The Six-Vector Formalism}
 The mentioned paper uses two formalisms.
 The electric and magnetic field are combined into the  six-vector \(\psi \) which is defined as
 \begin{equation}
@@ -131,7 +131,7 @@ The above definitions imply that the time-reversal operator \(\mathcal{T}\) acts
     \mathcal{T}q &= q^*
 \end{align}
 
-\subsection{The electromagnetic time-reversal equation}
+\subsection{The Electromagnetic Time-Reversal Equation}
 Under the assumption of a reciprocal environment (\(\varepsilon \) and \(\mu \) are hermitian) the following equation is derived in \parencite{de_rosny_theory_2010}:
 \begin{equation}\label{time-reversal-equation}
     \begin{aligned}
@@ -157,7 +157,7 @@ In conclusion \parencite{de_rosny_theory_2010} proves that it is possible to com
 
 
 
-\section{Time-reversal Imaging}
+\section{Time-Reversal Imaging}
 This section is dedicated to the explanation of how time-reversal is used for imaging.
 Imaging is a very broad term and can be applied to many different fields.
 In this thesis, the word imaging is always referring to solving the electromagnetic inverse scattering problem by producing an image of a target domain.
@@ -165,7 +165,7 @@ Inverse scattering focuses on identifying the characteristics of an unknown scat
 Here the focus is on the localization of passive targets, which are scatterers that do not emit any electromagnetic waves themselves.
 This problem is closely related to active-source localization, as the scattered field produced by passive targets can be interpreted as the radiated field from an induced source.~\parencite{chen_computational_2018}
 
-\subsection{Active-Source localization}
+\subsection{Active-Source Localization}
 Assuming that \(N\) point-sources, denoted as \(q_i(\omega)\), are located at positions \(\bm{r}_i\), the source-distribution \(q(\bm{r}, \omega)\) is obtained, with \(\delta(\bm{r}) \) denoting the dirac delta-function.
 \begin{equation}
     q(\bm{r}, \omega) = \sum_{i=1}^{N} \delta(\bm{r} - \bm{r}_i) \cdot q_i(\omega)
@@ -224,7 +224,7 @@ With this in mind one can see how equation~\eqref{electric-time-reversal} approx
     \bm{E}_{\text{TR}}(\bm{r}, \omega) \approx \bm{E}_{\text{TR-source}}(\bm{r}, \omega) =  \sum_{i=1}^{N} \delta(\bm{r}-\bm{r}_i) \cdot \bm{E}^*_i(\omega)
 \end{equation}
 
-\subsection{Monochromatic signals}
+\subsection{Monochromatic Signals}
 Although there are quite promising attempts of improving the imaging from the reconstructed time-reversed field by using time-domain techniques, like a correlation-based criteria~\parencite{li_correlation-based_2021}, the focus of this thesis will remain on the frequency-domain using monochromatic signals.
 These are defined by their amplitude \(|\bm{E}|\) and phase \(\phi \) at a single frequency \(\omega \) and are usually described by a complex phasor \(\underline{\bm{E}}(\bm{r})\).
 \begin{equation}
@@ -253,26 +253,25 @@ In this formula \(G(r_i, r_p, \omega) = H_{i\rightarrow p}(\omega)\) represents 
 
 
 
-\section{The Ray Concept of Electromagnetic waves}\label{sec:ray-concept}
+\section{The Ray Concept of Electromagnetic Waves}\label{sec:ray-concept}
 To calculate the imaging formula one needs to know the transfer-function \(H_{i\rightarrow p}(\omega)\) between every receiver and every imaging-point in the target-domain.
 This could be done by full-wave simulations of delta-impulses at the measurement locations.
 These simulations are extremely computationally expensive.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
 The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough.
 
-\subsection{Deriving the Eikonal equation from Maxwell's equations}
+\subsection{Deriving the Eikonal Equation from Maxwell's Equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
-
 Consider a source-free (\(q(\bm{r}) = \bm{J}(\bm{r}) = 0\)) and isotropic (\(\varepsilon(\bm{r}) = \varepsilon_0 \cdot \varepsilon_r(\bm{r})\) and \(\mu(\bm{r}) = \mu_0 \cdot \mu_r(\bm{r}) \)) medium with no free charges (\(\nabla \cdot \bm{E} = 0\)).
 Maxwell's equations can then be further simplified to
 \makeatletter
-\newcommand\Label[1]{&\refstepcounter{equation}(\theequation)\ltx@label{#1}&}
+\newcommand\Label[1]{&\refstepcounter{equation} (\theequation)\ltx@label{#1}&}
 \makeatother
 \begin{align*}
-    \nabla \cdot \bm{E} &= 0 \Label{eq:electric_divergence} & \nabla \cdot \bm{H} &= 0 \Label{eq:magentic_divergence}\\
-    \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t} \Label{eq:electric_curl} & \nabla \times \bm{H} &= \varepsilon \frac{\partial \bm{E}}{\partial t}\Label{eq:magnetic_curl}
+    \nabla \cdot \bm{E} &= 0 \Label{eq:electricdivergence} & \nabla \cdot \bm{H} &= 0 \Label{eq:magenticdivergence}\\
+    \nabla \times \bm{E} &= -\mu \frac{\partial \bm{H}}{\partial t} \Label{eq:electriccurl} & \nabla \times \bm{H} &= \varepsilon \frac{\partial \bm{E}}{\partial t}\Label{eq:magneticcurl}
 \end{align*}
-Taking the curl of equation~\eqref{eq:electric_curl} and differentiating~\eqref{eq:magnetic_curl} with respect to time yields
+Taking the curl of equation~\eqref{eq:electriccurl} and differentiating~\eqref{eq:magneticcurl} with respect to time yields
 \begin{align}
     \nabla \times (\nabla \times \bm{E}) &= -\mu (\frac{\partial}{\partial t} \nabla \times \bm{H}) \\
     \frac{\partial}{\partial t} \nabla \times \bm{H} &= \varepsilon \frac{\partial}{\partial t^2} \bm{E}
@@ -306,7 +305,7 @@ Dividing~\eqref{electromagnetic_wave_equation_complex} by \(k_0^2 A(\bm{r})\) an
 \end{equation}
 
 
-\subsection{Differential equation of rays}
+\subsection{The Differential Equation of Rays}
 Wavefronts are surfaces of constant phase \(\psi(\bm{r})\).
 Rays are defined as the orthogonal trajectories of the wavefronts and can be written as curves
 \begin{equation}
@@ -319,9 +318,9 @@ Combining the Eikonal equation with the definition of the unit-ray-vector yields
 \end{equation}
 Considering the identities \(\nabla(A^2)= 2 \cdot A \cdot \nabla A\) and \(\nabla[{(\nabla A)}^2] = 2 \cdot \nabla A \cdot \nabla^2 A\) and deriving equation~\eqref{ray-differential-equation} with respect to \(l\) results in the differential equation of rays~\parencite{born_foundations_1999}
 \begin{align}
-    \frac{d}{dl}(n(\bm{r}) \cdot \bm{v}(\bm{r})) &= \frac{d}{dl}(\nabla \psi(\bm{r})) = \nabla^2 \psi(\bm{r}) \cdot \frac{d\bm{r}}{dl} \\
-    &= \nabla^2 \psi(\bm{r}) \cdot \bm{v}(\bm{r}) = \nabla^2 \psi(\bm{r}) \cdot \nabla \psi(\bm{r}) \cdot \frac{1}{n(\bm{r})} \\
-    &= \frac{1}{2n(\bm{r})} \cdot \nabla[{(\nabla \psi)}^2] = \frac{1}{2n(\bm{r})} \cdot \nabla({n(\bm{r})}^2) \\
+    \frac{d}{dl}(n(\bm{r}) \cdot \bm{v}(\bm{r})) &= \frac{d}{dl}(\nabla \psi(\bm{r})) = \nabla^2 \psi(\bm{r}) \cdot \frac{d\bm{r}}{dl} \nonumber \\
+    &= \nabla^2 \psi(\bm{r}) \cdot \bm{v}(\bm{r}) = \nabla^2 \psi(\bm{r}) \cdot \nabla \psi(\bm{r}) \cdot \frac{1}{n(\bm{r})} \nonumber \\
+    &= \frac{1}{2n(\bm{r})} \cdot \nabla[{(\nabla \psi)}^2] = \frac{1}{2n(\bm{r})} \cdot \nabla({n(\bm{r})}^2) \nonumber \\
     &= \nabla n(\bm{r})
 \end{align}
 For a ray in a homogenous medium, i.e.~\(n(\bm{r}) = n_0\), this equation becomes
@@ -334,7 +333,7 @@ so the unit-ray-vector is a constant and hence the ray is a straight line.
 \end{equation}
 
 
-\subsection{Refraction and Reflection at plane interfaces}
+\subsection{Refraction and Reflection at Plane Interfaces}
 At a plane interface \(\Gamma \) of two homogenous media (\(\Lambda_1\) and \(\Lambda_2\)) with different refractive indices \(n_1\) and \(n_2\), the differential equation of rays must be fulfilled.
 An incident ray with unit-vector \(\bm{v}_1\) and the transmitted ray with unit-vector \(\bm{v}_2\) therefore satisfy the following conditions at any point on the interface.
 \begin{equation}
@@ -369,7 +368,7 @@ The reflected wave is in the same medium as the incident wave, which leads to th
 \end{equation}
 
 
-\subsection{Phase and Amplitude propagation along ray-paths}
+\subsection{Phase and Amplitude Propagation along Ray-Paths}
 According to the definition of the ray-path \(\bm{r}(l)\) and the Eikonal equation, the derivation of the phase \(k_0 \cdot \psi(\bm{r})\) of a wave along this path is always equal to \(k_0\) times the refractive index \(n(\bm{r})\) so the phase propagation can be written as
 \begin{equation}
     k_0 \cdot \psi(\bm{r}(l)) = k_0 \cdot \int_{0}^{l} n(\bm{r}(l^{\prime})) \, dl^{\prime}
@@ -410,7 +409,7 @@ Consider these identities
 \end{align}
 which lead to
 \begin{gather}
-    \nabla^2 (A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}) \\
+    \nabla^2 (A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}) \nonumber \\
     = (\nabla^2 A(\bm{r}) + 2\mathrm{i}k_0 \cdot \nabla A(\bm{r}) \nabla \psi(\bm{r}) - k_0^2 \cdot (\nabla \psi(\bm{r}))) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}
 \end{gather}
 This results in the following equivalence (\(\underline{\phi}(\bm{r}) = A(\bm{r}) \cdot \mathrm{e}^{\mathrm{i}k_0 \cdot \psi(\bm{r})}\))
