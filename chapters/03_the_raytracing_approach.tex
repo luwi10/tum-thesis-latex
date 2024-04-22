@@ -1,20 +1,20 @@
 % !TeX root = ../main.tex
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
-\chapter{The ray tracing approach}\label{chapter:the_raytracing_approach}
+\chapter{The Ray Tracing Approach}\label{chapter:the_raytracing_approach}
 In Chapter~\ref{chapter:background} the theoretical background for time-reversal imaging and the utilization of ray tracing for the needed wave-simulation were laid out.
 This chapter will describe the implementation of a ray tracing approach for the time-reversal imaging algorithm.
 
 As mentioned in \parencite{dyab_critical_2013} the quality of the time-reversed image increases within a highly reverberant environment.
 In contrast to other imaging algorithms, multipath propagation of the waves is therefore not suppressed but used to improve the time-reversal imaging.
-To simulate the multipath propagation, one is mostly interested in all the paths that the signal takes from the source to the imaging domain.
+To simulate the multipath propagation, one is interested in all the paths that the signal takes from the source to the imaging domain.
 The multipath propagation is mostly caused by reflections and refractions which can be described by the laws of geometrical optics as shown in Section~\ref{sec:ray-concept}.
 This is why ray tracing is such a suitable approach for this problem.
 
-\section{The imaging algorithm}
+\section{The Imaging Algorithm}
 The time-reversal imaging algorithm is a three-step process.
-First, the scene is illuminated with a monochromatic signal of frequency \(\omega_i\) and the resulting scattered field is recorded at \(M\) receiver locations \(\mathbf{r}_j\). 
-This step is repeated for \(N\) frequencies \(\omega_i\) resulting in the \(N \times M\) matrix \(\mathsf{S} \) containing the scattered field at all receiver locations for all frequencies.
+First, the scene is illuminated with a monochromatic signal of frequency \(\omega_i\) and the resulting scattered field is recorded at \(M\) receiver locations \(\bm{r}_j\). 
+This step is repeated for \(N\) frequencies \(\omega_i\) resulting in the \(N \times M\) matrix \(\mathsf{E} \) containing the scattered field at all receiver locations for all frequencies.
 
 In the second step, a random location in the target domain is chosen as the source of a big number of rays (\(N_{\text{rays}}\approx 10^{9}\)) which are launched into equally distributed random directions.
 A ray that follows a possible path from the target location to a receiver location will eventually hit the receiver so the path can be recorded.
@@ -23,31 +23,32 @@ This step is necessary because shooting \(N_{\text{rays}}\) rays in all directio
 
 The virtual targets resulting from the second step are then grouped into wavefronts, which are further described in Section~\ref{section:subdivision_into_wavefronts}.
 Finally, the field contribution of each wavefront at any point in the imaging domain is calculated.
-The measured scattered field \(\mathsf{S}\) is complex conjugated and sent back from every corresponding receiver to all points in the imaging domain along the paths of this wavefront.
-The sum of all receiver contributions at each point in the imaging domain gives rise to the time-reversed image of the target.
+The measured scattered field \(\underline{\mathsf{E}}\) is complex conjugated and sent back from every corresponding receiver to all points in the imaging domain along the paths of this wavefront.
+The sum of all receiver contributions at each point in the imaging domain gives rise to the time-reversed field in the imaging domain.
+By taking the absolute value of the time-reversed field the image is obtained.
 For a better resolution of the image, this step is repeated for all measured frequencies \(\omega_i\).
 This can be summarized in the imaging formula of the n-th wavefront
 \begin{equation}
-    I_n(\mathbf{r}_k) = \sum_{i=1}^{N} \sum_{j=1}^{M} \mathsf{S}_{ij} \cdot H_{j \rightarrow k}(\omega_i)
+    I_n(\bm{r}_k) = |\sum_{i=1}^{N} \sum_{j=1}^{M} \underline{\mathsf{E}}_{ij}^* \cdot H_{j \rightarrow k}(\omega_i)|
 \end{equation}
-where \(H_{j \rightarrow k}(\omega_i)\) is the transfer function from receiver \(j\) to point \(k\) in the imaging domain at frequency \(\omega_i\) along the n-th wavefront, which is calculated by tracing the electric field along the ray-path.
+where \(H_{j \rightarrow k}(\omega_i)\) is the transfer function from receiver \(j\) to point \(k\) in the imaging domain at frequency \(\omega_i\) along the n-th wavefront, which is calculated by tracing the electric field along the ray-path according to~\eqref{eq:field-along-ray-path}.
 
 
-\section{Implementation of virtual targets for multipath wave propagation}\label{section:virtual_targets}
+\section{Implementation of Virtual Targets for Multipath Wave Propagation}\label{section:virtual_targets}
 To derive the paths for all points in the imaging domain from the paths of a single point in the imaging domain, the so called probe point, the concept of virtual targets is used.
 
 A path is distinguished by its launch location, the receiver where it ends, and the sequence of plane surfaces it encounters between the launch point and the receiver.
 The receiver is modelled as a sphere with radius \(r_{\text{rec}}\) around the receiver location.
 This radius should be chosen big enough, so the randomly generated rays do not all miss the receiver, but small enough to not overlap with other receivers.
 
-If a ray launched from the probe point \(\mathbf{r}_p\) with the initial direction \(\mathbf{u}_{\text{init}}\) hits a receiver, any point \(\mathbf{p} = \mathbf{r}_p + s \cdot \mathbf{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
-To do this one simply has to shoot a ray from the probe point in the direction of \(\mathbf{p}\).
+If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \cdot \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
+To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\).
 
-Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target \(\mathbf{v}\).
+Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target \(\bm{v}\).
 \begin{equation}\label{eq:visual_target}
-    \mathbf{v} = \mathbf{r}_p + d \cdot \mathbf{u}_{\text{init}}
+    \bm{v} = \bm{r}_p + d \cdot \bm{u}_{\text{init}}
 \end{equation}
-Shooting a ray from any point \(\mathbf{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\mathbf{r}_k\) and the receiver as well.
+Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well.
 
 It is important to stress that this approach only works for points close to the probe point.
 If the point is too far away, a ray shot at the virtual target might not hit the receiver as shown in figure \ldots.
@@ -61,19 +62,20 @@ This way it can be checked if a virtual target for this path has already been re
 
 Furthermore, equation~\eqref{eq:visual_target} is only an approximation of a perfect virtual target, which would be retrieved by mirroring the receiver location at the plane surfaces the ray hits in a backwards manner.
 For the sake of simplicity, this is not done in the implementation.
-Instead the center of the hit sphere \(\mathbf{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path.
+Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path.
 \begin{equation}
-    d_{\text{final}} = d_{\text{ray\_hit}} +  (\mathbf{r}_{\text{receiver}} - \mathbf{r}_{\text{ray\_hit}}) \cdot \mathbf{u}_{\text{ray\_hit}}
+    d_{\text{final}} = d_{\text{ray\_hit}} +  (\bm{r}_{\text{receiver}} - \bm{r}_{\text{ray\_hit}}) \cdot \bm{u}_{\text{ray\_hit}}
 \end{equation}
 
-\section{Subdivision into wavefronts}\label{section:subdivision_into_wavefronts}
+\section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
 
-The virtual targets recorded in the preceding step are mirrored versions of the receiver locations.
+Every virtual targets recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.
 By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be simulated.
 A subset of virtual targets which accounts for one mirrored version of all receiver locations is called a wavefront.
 There are as many wavefronts as there are different paths from one receiver to the probe point.
 The virtual targets are mapped to the wavefronts by the hash value of the ray before including the hit receivers object-ID into the hash calculation.
 This way, the wavefronts are characterized by the sequence of plane surfaces the rays reflect of.
 
+The term wavefront is used because the paths of the rays to the virtual targets of one wavefront can be seen as the paths of a common wavefront that is emitted from the receiver location.
 The subdivision of the virtual targets into wavefronts is done to get more insight into the imaging contribution of each wavefront.
 To retrieve the final time-reversed image, the images of all wavefronts simply have to be summed up.

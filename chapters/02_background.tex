@@ -243,13 +243,13 @@ This means the time-reversal procedure for monochromatic-signals consists simply
 This way all the measured phasors at the receivers rotated back will align in the source-location and hence interfere constructively, resulting in a maximum of amplitude at this point.  
 
 \vspace{1cm}
-In conclusion, measuring the far field with multiple sensors and subsequently calculating the field that would be created by antennas at the measurement locations emitting the time-reversed signal will result in an amplitude distribution that is maximal at the source locations.
+In conclusion, measuring the far field with multiple sensors and subsequently calculating the field that would be created by antennas emitting the time-reversed signal from the measured locations will result in an amplitude distribution that is maximal at the source locations.
 This will then enable the localization of the sources. 
-The corresponding imaging formula for \(N\) measurements \(E_i\) of monochromatic waves of frequency \(\omega \) at the locations \(\bm{r_i}\) as presented in~\parencite{peng_zhang_comparison_2013} is
+The corresponding imaging formula for \(N\) measurements \(E_i\) of monochromatic waves of frequency \(\omega \) at the locations \(\bm{r}_i\) is~\parencite{peng_zhang_comparison_2013}
 \begin{equation}
-    I^{\mathrm{\text{TR}}}\left(r_p\right)=\sum_{i=1}^N E_{i}^* \cdot G\left(r_i, r_p, \omega\right)
+    I^{\mathrm{\text{TR}}}\left(\bm{r}_p\right)=|\sum_{i=1}^N E_{i}^* \cdot G\left(\bm{r}_i, \bm{r}_p, \omega\right)|
 \end{equation}
-In this formula \(G(r_i, r_p, \omega) = H_{i\rightarrow p}(\omega)\) represents the propagation of the wave from the source \(i\) to the imaging-point \(p\).
+In this formula \(G(\bm{r}_i, \bm{r}_p, \omega) = H_{i\rightarrow p}(\omega)\) represents the propagation of the wave from the source \(i\) to the imaging-point \(p\).
 
 
 
@@ -393,7 +393,7 @@ For our case it is sufficient to model a reflective surface with a virtual sourc
 If the scenario is even more complex, for example curved reflective surfaces, or sharp edges, a more sophisticated model would be needed.
 
 With these considerations in mind, the propagation of the electric field along a straight ray-path \(\bm{r}(l)\) from a source \(E_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
-\begin{equation}
+\begin{equation} \label{eq:field-along-ray-path}
     \underline{\bm{E}}(l) = \frac{1}{l} \cdot E_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
 \end{equation}
 

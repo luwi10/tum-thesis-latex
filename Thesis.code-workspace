@@ -41,8 +41,11 @@
         "latex-workshop.view.pdf.color.dark.backgroundColor": "#1f1f1f",
         "latex-workshop.latex.watch.pdf.delay": 2000,
         "cSpell.words": [
+            "Backpropagated",
             "Eikonal",
+            "Feko",
             "multipath",
+            "NLOS",
             "phasor",
             "phasors",
             "Poynting",
