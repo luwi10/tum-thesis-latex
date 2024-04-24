@@ -6,6 +6,9 @@
 %\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
 \documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
 
+% Run svg-convert.bat
+\immediate\write18{svg-convert.bat}
+
 % TODO: change citation style in settings
 \input{settings}
 
