@@ -25,7 +25,7 @@ The virtual targets resulting from the second step are then grouped into wavefro
 Finally, the field contribution of each wavefront at any point in the imaging domain is calculated.
 The measured scattered field \(\underline{\mathsf{E}}\) is complex conjugated and sent back from every corresponding receiver to all points in the imaging domain along the paths of this wavefront.
 The sum of all receiver contributions at each point in the imaging domain gives rise to the time-reversed field in the imaging domain.
-By taking the absolute value of the time-reversed field the image is obtained.
+By taking the absolute value of the time-reversed field, the image is obtained.
 For a better resolution of the image, this step is repeated for all measured frequencies \(\omega_i\).
 This can be summarized in the imaging formula of the n-th wavefront
 \begin{equation}
@@ -40,9 +40,14 @@ To derive the paths for all points in the imaging domain from the paths of a sin
 A path is distinguished by its launch location, the receiver where it ends, and the sequence of plane surfaces it encounters between the launch point and the receiver.
 The receiver is modelled as a sphere with radius \(r_{\text{rec}}\) around the receiver location.
 This radius should be chosen big enough, so the randomly generated rays do not all miss the receiver, but small enough to not overlap with other receivers.
-
 If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \cdot \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
-To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\).
+To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\) (see Figure~\ref{fig:virtual_targets}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/VirtualTargets.pdf}
+    \caption{TODO}\label{fig:virtual_targets}
+\end{figure}
 
 Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target \(\bm{v}\).
 \begin{equation}\label{eq:visual_target}
