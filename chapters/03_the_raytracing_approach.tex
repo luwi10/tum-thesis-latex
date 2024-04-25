@@ -35,42 +35,58 @@ where \(H_{j \rightarrow k}(\omega_i)\) is the transfer function from receiver \
 
 
 \section{Implementation of Virtual Targets for Multipath Wave Propagation}\label{section:virtual_targets}
-To derive the paths for all points in the imaging domain from the paths of a single point in the imaging domain, the so called probe point, the concept of virtual targets is used.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/VirtualTargets.pdf}
+    \caption{The green paths show, how shooting a ray at a virtual target (dotted circle) from different locations can result in hitting the original target (full line circle). The red path on the other hand does not hit the target because its launch location is too far away from the other launch locations.}\label{fig:virtual_targets}
+\end{figure}
+
+To derive the paths for all points in the imaging domain from the paths of a single point in the imaging domain, the concept of virtual targets is used.
+In the following, the initial single point in the imaging domain is called the probe point.
 
 A path is distinguished by its launch location, the receiver where it ends, and the sequence of plane surfaces it encounters between the launch point and the receiver.
 The receiver is modelled as a sphere with radius \(r_{\text{rec}}\) around the receiver location.
 This radius should be chosen big enough, so the randomly generated rays do not all miss the receiver, but small enough to not overlap with other receivers.
 If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \cdot \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
-To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\) (see Figure~\ref{fig:virtual_targets}).
+To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\).
 
-\begin{figure}[ht]
+\begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/VirtualTargets.pdf}
-    \caption{TODO}\label{fig:virtual_targets}
+    \includegraphics[width=0.5\textwidth]{figures/VirtualTargetsMultiHit.pdf}
+    \caption{Two random rays hit the receiver sphere, so two virtual targets would be created (red circles) although there should be only one virtual target (green circle) at the mirrored position of the receiver circle.}\label{fig:mulithit}
 \end{figure}
 
 Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target \(\bm{v}\).
 \begin{equation}\label{eq:visual_target}
     \bm{v} = \bm{r}_p + d \cdot \bm{u}_{\text{init}}
 \end{equation}
-Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well.
+Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well  (see Figure~\ref{fig:virtual_targets}).
 
 It is important to stress that this approach only works for points close to the probe point.
-If the point is too far away, a ray shot at the virtual target might not hit the receiver as shown in figure \ldots.
+If the point is too far away, a ray shot at the virtual target might not hit the receiver.
 In a similar way, the virtual targets found for the probe point might not account for all the paths between an imaging point and the receiver.
 
-Another problem arises with this approach when multiple rays with slightly different launch directions hit the same receiver taking the same path.
+Another problem arises with this approach when multiple rays with slightly different launch directions hit the same receiver taking the same path (see Figure~\ref{fig:mulithit}).
 In this case two virtual targets would be recorded for one actual path.
 This would lead to an unwanted increased influence of this path in the time-reversal step.
 To resolve this issue, every ray has an associated hash value that is calculated from the path it takes, i.e.~from the object-ID's of the plane surfaces it bounces of and the receiver it finally hits.
 This way it can be checked if a virtual target for this path has already been recorded, as every path has an unique hash value.
+If this is the case, the new virtual target is not saved.
 
 Furthermore, equation~\eqref{eq:visual_target} is only an approximation of a perfect virtual target, which would be retrieved by mirroring the receiver location at the plane surfaces the ray hits in a backwards manner.
 For the sake of simplicity, this is not done in the implementation.
 Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path.
+
 \begin{equation}
-    d_{\text{final}} = d_{\text{ray\_hit}} +  (\bm{r}_{\text{receiver}} - \bm{r}_{\text{ray\_hit}}) \cdot \bm{u}_{\text{ray\_hit}}
+    d_{\text{approx}} = d_{\text{ray\_hit}} +  (\bm{r}_{\text{receiver}} - \bm{r}_{\text{ray\_hit}}) \cdot \bm{u}_{\text{ray\_hit}} \approx d_{\text{actual}}
 \end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/d_approx.pdf}
+    \caption{Projection of \(\bm{r}_{\text{receiver}}\)}\label{fig:d_approx}
+\end{figure}
 
 \section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
 
