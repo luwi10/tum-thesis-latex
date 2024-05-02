@@ -16,7 +16,6 @@ First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
 This means, that the sequence of the states is reversed with respect to time.
 Secondly, a time-reversal operator has to be applied to each individual instantaneous state \(s(t) \mapsto \mathcal{T}s(t)\), e.g.\ a ball with velocity to the right would become a ball with velocity to the left.
 The time-reversal operator acts by either reversing (momentum) or preserving (kinetic energy) the properties.
-
 In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\mathcal{T}s(-t)\). 
 
 As mentioned before, the curve \(s(t)\) inside the state-space \(\mathbb{P}\) describes the evolution of a physical system in time.
@@ -392,10 +391,11 @@ In scenarios like the reflection at interfaces, the amplitude and direction of t
 For our case it is sufficient to model a reflective surface with a virtual source that is placed in the mirrored position of the original source with respect to the surface, so the reflected ray's amplitude keeps decreasing with \(\frac{1}{l}\), where \(l\) is the distance from the virtual source.
 If the scenario is even more complex, for example curved reflective surfaces, or sharp edges, a more sophisticated model would be needed.
 
-With these considerations in mind, the propagation of the electric field along a straight ray-path \(\bm{r}(l)\) from a source \(E_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
+With these limitations in mind, the propagation of the electric field along a straight ray-path \(\bm{r}(l)\) from a source \(\underline{\bm{E}}_0\) through a homogenous medium (refractive index \(n\)), with \(l\) denoting the distance from the source, can be described as
 \begin{equation} \label{eq:field-along-ray-path}
-    \underline{\bm{E}}(l) = \frac{1}{l} \cdot E_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
+    \underline{\bm{E}}(l) = \frac{1}{1 + l} \cdot \underline{\bm{E}}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
 \end{equation}
+The factor \(\frac{1}{1 + l}\) is chosen so the decay of the amplitude is inversely proportional to \(l\) and  \(\underline{\bm{E}}(0) = \underline{\bm{E}}_0 \)
 
 
 

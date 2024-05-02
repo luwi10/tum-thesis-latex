@@ -24,7 +24,9 @@ This step is necessary because shooting \(N_{\text{rays}}\) rays in all directio
 The virtual targets resulting from the second step are then grouped into wavefronts, which are further described in Section~\ref{section:subdivision_into_wavefronts}.
 Finally, the field contribution of each wavefront at any point in the imaging domain is calculated.
 The measured scattered field \(\underline{\mathsf{E}}\) is complex conjugated and sent back from every corresponding receiver to all points in the imaging domain along the paths of this wavefront.
-The sum of all receiver contributions at each point in the imaging domain gives rise to the time-reversed field in the imaging domain.
+The calculation of the field propagation along this ray-path from one hit-point to the next is described in Section~\ref{section:calculation_of_the_field_propagation}.
+
+The sum of all receiver contributions at each point in the imaging domain then gives rise to the time-reversed field of this wavefront in the imaging domain.
 By taking the absolute value of the time-reversed field, the image is obtained.
 For a better resolution of the image, this step is repeated for all measured frequencies \(\omega_i\).
 This can be summarized in the imaging formula of the n-th wavefront
@@ -88,9 +90,9 @@ Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected o
     \caption{Projection of \(\bm{r}_{\text{receiver}}\)}\label{fig:d_approx}
 \end{figure}
 
-\section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
 
-Every virtual targets recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.
+\section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
+Every virtual target recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.
 By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be simulated.
 A subset of virtual targets which accounts for one mirrored version of all receiver locations is called a wavefront.
 There are as many wavefronts as there are different paths from one receiver to the probe point.
@@ -100,3 +102,24 @@ This way, the wavefronts are characterized by the sequence of plane surfaces the
 The term wavefront is used because the paths of the rays to the virtual targets of one wavefront can be seen as the paths of a common wavefront that is emitted from the receiver location.
 The subdivision of the virtual targets into wavefronts is done to get more insight into the imaging contribution of each wavefront.
 To retrieve the final time-reversed image, the images of all wavefronts simply have to be summed up.
+
+
+\section{Calculation of the Field Propagation}\label{section:calculation_of_the_field_propagation}
+As shown in Equation~\eqref{eq:field-along-ray-path}, the propagation of the electric field along the ray-path according to the path-length \(l\) is calculated by:
+\begin{equation}
+    \underline{E}(l) = \frac{1}{1 + l} \cdot \underline{E}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
+\end{equation} 
+
+The ray tracing program will calculate the location where a ray hits a plane surface (or receiver sphere respectively) and the direction of the reflected ray.
+To efficiently trace the field along the ray-path, the resulting field \(\underline{E}_{\text{new}}\) at the hit location should be calculated from the field \(\underline{E}_{\text{old}}\) at the previous hit location (or the launch location respectively), the length of the path at this old hit location \(l_{\text{old}}\) and the distance \(d\) between the old and the new hit point.
+\begin{equation}
+    \underline{E}_{\text{new}} = \underline{E}_{\text{new}}(l_{\text{new}}) = \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)
+\end{equation}
+Considering that \(l_{\text{new}} = l_{\text{old}} + d\) the new field can be written as
+\begin{equation}
+    \underline{E}_{\text{new}} = \frac{1}{1 + l_{\text{old}} + d} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot d}  \cdot \underline{E}_{0} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l_{\text{old}}} 
+\end{equation}
+With \(\underline{E}_{\text{old}} = \frac{1}{1 + l_{\text{old}}} \cdot \underline{E}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l_{\text{old}}} \) the formula for \(\underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)\) is retrieved:
+\begin{equation}
+    \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d) = \underline{E}_{\text{old}} \cdot \frac{1 + l_{\text{old}}}{1 + l_{\text{old}} + d} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot d}
+\end{equation}
