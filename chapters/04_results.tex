@@ -90,7 +90,7 @@ As can be seen in Figure~\ref{fig:MultipathLOS}, both images are a very good app
 A closer look reveals that in the image where only the direct wavefront is considered, the dipoles closer to the receivers are shown more intensely than the dipoles further away.
 The right image shows almost the same intensity for all dipoles, which is the expected result.
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.49\textwidth]{figures/result_multipath_los_direct.pdf}
     \includegraphics[width=0.49\textwidth]{figures/result_multipath_los_combined.pdf}
@@ -119,19 +119,26 @@ The combined image however shows the dipoles clearly with just a little inaccura
 
 
 \section{Limitations}
-The previous section showed that the presented algorithm can work in some scenarios.
+The previous section showed that the presented algorithm works in the specified scenario.
 Although the results are quite promising, as it was possible to reconstruct the original sources quite well, there are limitations of the algorithm that should be considered when applying it.
-
 First of all, it was shown, that the contribution of NLOS wavefronts is only marginal if there is a direct path between the imaging domain and the receivers.
 Despite the fact that they improved the image quality in some sense, in most cases the constructed image from the LOS wavefront would be sufficient.
 This is important because every wavefront needs the same computational time to be computed, so a significant amount of time could be saved by only computing the LOS wavefront.
-
-Furthermore, the algorithm still performs quite slow.
-Even though it is executed by a `NVIDIA GeForce GTX 1080' GPU it took almost fifteen minutes to compute all the wavefronts for the NLOS multipath scenario.
-The GPU takes up to 18 seconds to perform the calculation for one billion rays.
+Furthermore, the algorithm has some speed limitation.
+Even though it is executed by a `NVIDIA GeForce GTX 1080' GPU it took 265 seconds to compute all the wavefronts for the NLOS multipath scenario.
+The GPU takes up to 5 seconds to perform the calculation for one billion rays.
 In the mentioned scenario \(100 \cdot 100 = 10000\) receivers had to be connected with \(256 \cdot 256 = 65536\) imaging points, every ray has to be computed for every wavefront and every frequency.
 This results in \(10000 \cdot 65536 \cdot 20 \cdot 4 \approx 52\) billion rays.
-Taking this huge number into account it is understandable, why the algorithm takes so long.
+Taking this huge number into account it is understandable, why the algorithm takes a significant amount of time to finish.
 The execution time gets even worse when a three dimensional imaging domain is investigated.
 This means in a practical case at least some a-priori information about the whereabouts of the dipoles is needed, as only a relatively small domain can be calculated in a reasonable time.
+A way to reduce the computational time would be considering less frequencies or considering less measured data.
+It turns out, that reducing the number of frequencies to five instead of twenty frequencies results in a noticeable worse image quality, but the reduction of receivers to 2500 instead of 10000 still produces good results.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_reduced_freq.pdf}
+    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_reduced.pdf}
+    \caption{The results with less frequencies (left) and less receivers (right)}\label{fig:MultipathNLOS_time_optimized}
+\end{figure}
 

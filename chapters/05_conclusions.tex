@@ -1,5 +1,20 @@
 % !TeX root = ../main.tex
 % Add the above to each chapter to make compiling the PDF easier in some editors.
 
-\chapter{Conclusions}\label{chapter:conclusions}
+\chapter{Conclusions and Outlook}\label{chapter:conclusions}
+The thesis presented a ray tracing approach for calculating the time-reversal image of a specified domain from measured data in the microwave spectrum.
+The needed theoretical background was summarized and the algorithm was tested on a set of different examples.
+The results showed, that the algorithm is able to improve the image quality by considering the multipath propagation from a surrounding setup in some scenarios, especially when the direct path is blocked.
+As the greatest disadvantage of the algorithm, the high computational cost was identified.
+Although using a GPU for the calculations, no real-time application is possible for practical cases.
+But the algorithm is still much faster than a full-wave simulation and can be used for a first approximation of the time-reversal image.
+A possible field of further research could be the optimization of the algorithm for real-time applications, by improving the placement of the receivers and the reflector plates, so that the number of needed rays can be reduced, while still maintaining a good image quality.
+Another possible improvement could be the use of a more sophisticated ray tracing algorithm, that can handle more complex geometries and materials, as in this thesis only plane PEC-plates were used.
+Such an algorithm would need to treat the electromagnetic wave as a vector field instead of a simple scalar field, as the polarization of the wave influences the scattering and reflecting process.
+Furthermore the performance of the algorithm with real-world measurements could be tested, as the results in this thesis were only based on simulated data.
+The algorithm could also be extended to work with other types of waves, like acoustic waves or seismic waves, as the principle of time-reversal imaging is not limited to the microwave spectrum.
+But for creating a real benefit for practical applications, a more advanced algorithm is needed, that can not only image active-sources, but also passive scatter-points.
+For this purpose, the algorithm would also have to consider the locations of illuminating transmitters.
+
+
 
