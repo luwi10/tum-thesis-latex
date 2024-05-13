@@ -7,27 +7,54 @@ These two concepts are essential for understanding the time-reversal imaging pro
 
 \section{Time-Reversal of the Electromagnetic Field}
 \subsection{Time-Reversal Invariance of Physical Laws}
-The evolution of a physical system in time can be described by a curve \(s(t) \in \mathbb{P}\) that is moving inside a state-space \(\mathbb{P}\).
+The evolution of a physical system in time can be described by a trajectory \(s(t) \in \mathbb{P}\) in a state-space \(\mathbb{P}\).
 This state-space is a high-dimensional space, where each dimension represents a physical property (e.g.~mass, velocity, kinetic energy etc.) of each component of the system.
 It should not be confused with the physical space.
-
 In general the time-reversal transformation consists of two components~\parencite{roberts_reversing_2022}.
-First, the curve \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
+First, the trajectory \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
 This means, that the sequence of the states is reversed with respect to time.
-Secondly, a time-reversal operator has to be applied to each individual instantaneous state \(s(t) \mapsto \mathcal{T}s(t)\), e.g.\ a ball with velocity to the right would become a ball with velocity to the left.
+This alone is not sufficient as the properties of the states have to be time-reversed as well.
+In a second step, a time-reversal operator has to be applied to each individual instantaneous state \(s(t) \mapsto \mathcal{T}s(t)\), e.g.\ a ball with velocity to the right would become a ball with velocity to the left.
 The time-reversal operator acts by either reversing (momentum) or preserving (kinetic energy) the properties.
 In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\mathcal{T}s(-t)\). 
-
-As mentioned before, the curve \(s(t)\) inside the state-space \(\mathbb{P}\) describes the evolution of a physical system in time.
-This means, \(s(t)\) is a solution to the equations given by the laws that describe the system. 
+As \(s(t)\) is an observable trajectory in the physical world, it is a solution to the equations given by the laws that describe the system. 
 A law being time-reversal invariant, therefore implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
 
 For a more hands-on example, imagine filming a ball that is influenced by gravity while flying through a vacuum.
-Newtons second law \({F}=m \cdot {a}\) is time-reversal invariant. This means the film can be played backwards and the trajectory of the ball will still follow Newtons second law.
+Newtons second law \({F}=m \cdot {a}\) is time-reversal invariant. 
+This means the film can be played backwards and the trajectory of the ball will still follow Newtons second law.
 An example for a non time-reversal invariant law is the second law of thermodynamics, which states that the entropy of an isolated system never decreases.
 This means, that a film of a gas spreading out in a room played backwards would not comply to this law, as the entropy of the system in the backwards film actually decreases by time.
 
-
+\begin{figure}[ht]
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \begin{subfigure}[b]{\textwidth}
+            \centering
+            \includegraphics[page=1, width=\textwidth]{figures/pure_los.pdf}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{\textwidth}
+            \centering
+            \includegraphics[page=2, width=\textwidth]{figures/pure_los.pdf}
+        \end{subfigure}
+        \caption{First figure}\label{fig:figure1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.45\textwidth}
+        \centering
+        \begin{subfigure}[b]{\textwidth}
+            \centering
+            \includegraphics[page=1, width=\textwidth]{figures/pure_los.pdf}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{\textwidth}
+            \centering
+            \includegraphics[page=2, width=\textwidth]{figures/pure_los.pdf}
+        \end{subfigure}
+        \caption{Second figure}\label{fig:figure2}
+    \end{minipage}
+\end{figure}
 
 \subsection{Time-Reversal Invariance of Maxwell's Equations}
 Maxwell's equations formulate the foundations of classical electromagnetism.

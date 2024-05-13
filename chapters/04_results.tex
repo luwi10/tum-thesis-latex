@@ -12,7 +12,7 @@ The imaging algorithm is then applied to the recorded data to reconstruct the so
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/general_setup.pdf}
+    \includegraphics[page=3, width=0.8\textwidth]{figures/pure_los.pdf}
     \caption{The General Setup}\label{fig:general_setup}
 \end{figure}
 
@@ -28,7 +28,8 @@ If there are furthermore no refractions (homogenous medium with refractive index
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/los_result.pdf}
+    \includegraphics[page=2, width=0.49\textwidth]{figures/pure_los.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/pure_los.pdf}
     \caption{The image of the pure LOS-scenario}\label{fig:los_results}
 \end{figure}
 
@@ -46,7 +47,7 @@ The resulting setup is shown in Figure~\ref{fig:nlos_setup}.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/nlos_setup.pdf}
+    \includegraphics[page=3, width=0.8\textwidth]{figures/pure_nlos.pdf}
     \caption{The NLOS Setup}\label{fig:nlos_setup}
 \end{figure}
 
@@ -57,8 +58,10 @@ In the plots the paths of the rays that are considered by the algorithm are visu
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/nlos_naive_result.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/nlos_result.pdf}
+    \includegraphics[page=2, width=0.49\textwidth]{figures/pure_nlos_naive.pdf}
+    \includegraphics[page=2, width=0.49\textwidth]{figures/pure_nlos.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/pure_nlos_naive.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/pure_nlos.pdf}
     \caption{The Intensity of the Backpropagated field using a naive algorithm (left) compared to the ray-tracing algorithm (right)}\label{fig:nlos_results}
 \end{figure}
 
@@ -75,11 +78,20 @@ First a setup with multiple reflecting paths and a direct path between the sourc
 Secondly the same setup is used, but a blocking plate is placed in front of the dipoles, so no direct path between the source and the receiver exists.
 
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/setup_multipath_los.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/setup_multipath_nlos.pdf}
+    \includegraphics[page=3, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
+    \includegraphics[page=3, width=0.49\textwidth]{figures/multipath_nlos_combined.pdf}
     \caption{The Multipath Setup for LOS (left) and NLOS (right)}\label{fig:MultipathNLOS_setup}
+\end{figure}
+
+\begin{figure}[p]
+    \centering
+    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
+    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
+    \caption{The LOS-results considering only the direct wavefront (left) and combining all wavefronts (right)}\label{fig:MultipathLOS}
 \end{figure}
 
 \subsection{LOS Multipath}
@@ -90,13 +102,22 @@ As can be seen in Figure~\ref{fig:MultipathLOS}, both images are a very good app
 A closer look reveals that in the image where only the direct wavefront is considered, the dipoles closer to the receivers are shown more intensely than the dipoles further away.
 The right image shows almost the same intensity for all dipoles, which is the expected result.
 
-\begin{figure}[h]
+\begin{figure}[hp]
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_los_direct.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_los_combined.pdf}
-    \caption{The LOS-results considering only the direct wavefront (left) and combining all wavefronts (right)}\label{fig:MultipathLOS}
+    \vspace{-1.5em} % Adjust this value to reduce the gap
+    \includegraphics[page=2, trim=0mm 10mm 0mm 20mm, clip, width=0.49\textwidth]{figures/multipath_nlos_wavefront1.pdf}
+    \includegraphics[page=2, trim=0mm 10mm 0mm 20mm, clip, width=0.49\textwidth]{figures/multipath_nlos_wavefront2.pdf}
+    \vspace{-1em} % Adjust this value to reduce the gap
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_wavefront1.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_wavefront2.pdf}
+    \vspace{-1em} % Adjust this value to reduce the gap
+    \includegraphics[page=2, trim=0mm 10mm 0mm 20mm, clip, width=0.49\textwidth]{figures/multipath_nlos_wavefront3.pdf}
+    \includegraphics[page=2, trim=0mm 10mm 0mm 20mm, clip, width=0.49\textwidth]{figures/multipath_nlos_wavefront4.pdf}
+    \vspace{-1em} % Adjust this value to reduce the gap
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_wavefront3.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_wavefront4.pdf}
+    \caption{The resulting images for all four wavefronts in the NLOS-multipath scenario}\label{fig:MultipathNLOS_results}
 \end{figure}
-
 
 \subsection{NLOS Multipath}
 In the multipath setup no LOS-wavefront exists, so the image can only be reconstructed by the reflected wavefronts.
@@ -107,16 +128,9 @@ The combined image however shows the dipoles clearly with just a little inaccura
 
 \begin{figure}[hp]
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_wf1.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_wf2.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_wf3.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_wf4.pdf}
-    \caption{The resulting images for all four wavefronts}\label{fig:MultipathNLOS_results}
-    
-    \includegraphics[width=0.7\textwidth]{figures/result_multipath_nlos_combined.pdf}
-    \caption{The combined image of every single wavefront}\label{fig:MultipathNLOS_combined}
+    \includegraphics[page=1, width=0.7\textwidth]{figures/multipath_nlos_combined.pdf}
+    \caption{The combined image of all the single wavefronts together}\label{fig:MultipathNLOS_combined}
 \end{figure}
-
 
 \section{Limitations}
 The previous section showed that the presented algorithm works in the specified scenario.
@@ -137,8 +151,8 @@ It turns out, that reducing the number of frequencies to five instead of twenty 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_reduced_freq.pdf}
-    \includegraphics[width=0.49\textwidth]{figures/result_multipath_nlos_reduced.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_reduced_freq.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_nlos_reduced_receiver.pdf}
     \caption{The results with less frequencies (left) and less receivers (right)}\label{fig:MultipathNLOS_time_optimized}
 \end{figure}
 
