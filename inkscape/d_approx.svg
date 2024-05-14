@@ -24,9 +24,9 @@
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.0129245"
-     inkscape:cx="135.74555"
-     inkscape:cy="81.447333"
+     inkscape:zoom="4.051698"
+     inkscape:cx="170.05216"
+     inkscape:cy="76.140917"
      inkscape:window-width="1920"
      inkscape:window-height="991"
      inkscape:window-x="-9"
@@ -77,34 +77,15 @@
        id="path4524" />
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:none;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="84.270058"
-       y="79.929581"
-       id="text5306"><tspan
-         sodipodi:role="line"
-         id="tspan5304"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';stroke-width:0;stroke-dasharray:none"
-         x="84.270058"
-         y="79.929581"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan5360">r</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan5358">ray_hit</tspan></tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:none;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:none;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        x="90.180504"
        y="64.22995"
        id="text8272"><tspan
          sodipodi:role="line"
          id="tspan8270"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';stroke-width:0;stroke-dasharray:none"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';stroke-width:0;stroke-dasharray:none"
          x="90.180504"
-         y="64.22995"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan8266">r</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan8268">receiver</tspan></tspan></text>
+         y="64.22995" /></text>
     <path
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="M 67.462219,85.724578 65.291977,85.332087"
@@ -163,21 +144,6 @@
          y="84.76178" /></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:none;stroke:#000000;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="50.443707"
-       y="98.344696"
-       id="text10158"><tspan
-         sodipodi:role="line"
-         id="tspan10156"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';stroke-width:0;stroke-dasharray:none"
-         x="50.443707"
-         y="98.344696"><tspan
-           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic';fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan10152">r</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
-           id="tspan10154">launch</tspan></tspan></text>
-    <text
-       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        x="51.901119"
        y="79.421638"
@@ -189,57 +155,58 @@
          y="79.421638" /></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Italic';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="39.064365"
-       y="72.587685"
-       id="text11626"><tspan
+       style="font-size:4.23333px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round"
+       x="39.014378"
+       y="64.627296"
+       id="text7597"><tspan
          sodipodi:role="line"
-         id="tspan11624"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Italic';stroke-width:0.1"
-         x="39.064365"
-         y="72.587685">d<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan11650">ray_hit</tspan> = <tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan11644">|</tspan><tspan
-   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic'"
-   id="tspan11642">r</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan11638">ray_hit</tspan> <tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan11636">- </tspan><tspan
-   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic'"
-   id="tspan11634">r</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan11630">launch</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan11646">|</tspan> </tspan></text>
+         id="tspan7595"
+         style="font-size:4.23333px;stroke-width:0"
+         x="39.014378"
+         y="64.627296">$d_{\text{actual}} = |r_{\text{receiver}} - r_{\text{launch}}|$</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Italic';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.1;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       x="39.064365"
-       y="64.091415"
-       id="text12418"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round"
+       x="90.733437"
+       y="62.60294"
+       id="text7601"><tspan
          sodipodi:role="line"
-         id="tspan12416"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Italic';stroke-width:0.1"
-         x="39.064365"
-         y="64.091415">d<tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan12420">actual</tspan>  = <tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan12402">|</tspan><tspan
-   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic'"
-   id="tspan12404">r</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan12406">receiver</tspan> <tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan12408">- </tspan><tspan
-   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold Italic'"
-   id="tspan12410">r</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:65%;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';baseline-shift:sub"
-   id="tspan12412">launch</tspan><tspan
-   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, '"
-   id="tspan12414">|</tspan> </tspan></text>
+         id="tspan7599"
+         style="stroke-width:0"
+         x="90.733437"
+         y="62.60294">$r_{\text{receiver}}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round"
+       x="85.574585"
+       y="81.083359"
+       id="text7605"><tspan
+         sodipodi:role="line"
+         id="tspan7603"
+         style="stroke-width:0"
+         x="85.574585"
+         y="81.083359">$r_{\text{ray\_hit}}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round"
+       x="50.246292"
+       y="98.649559"
+       id="text7609"><tspan
+         sodipodi:role="line"
+         id="tspan7607"
+         style="stroke-width:0"
+         x="50.246292"
+         y="98.649559">$r_{\text{launch}}$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;stroke:#000000;stroke-width:0;stroke-linecap:round"
+       x="39.014374"
+       y="73.443047"
+       id="text7613"><tspan
+         sodipodi:role="line"
+         id="tspan7611"
+         style="stroke-width:0"
+         x="39.014374"
+         y="73.443047">$d_{\text{ray\_hit}} = |r_{\text{ray\_hit}} - r_{\text{launch}}|$</tspan></text>
   </g>
 </svg>

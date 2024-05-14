@@ -40,7 +40,7 @@ where \(H_{j \rightarrow k}(\omega_i)\) is the transfer function from receiver \
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/VirtualTargets.pdf}
+    \includegraphics[width=0.5\textwidth]{build/VirtualTargets.pdf}
     \caption{The green paths show, how shooting a ray at a virtual target (dotted circle) from different locations can result in hitting the original target (full line circle). The red path on the other hand does not hit the target because its launch location is too far away from the other launch locations.}\label{fig:virtual_targets}
 \end{figure}
 
@@ -55,7 +55,7 @@ To do this one simply has to shoot a ray from the probe point in the direction o
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/VirtualTargetsMultiHit.pdf}
+    \includegraphics[width=0.5\textwidth]{build/VirtualTargetsMultiHit.pdf}
     \caption{Two random rays hit the receiver sphere, so two virtual targets would be created (red circles) although there should be only one virtual target (green circle) at the mirrored position of the receiver circle.}\label{fig:mulithit}
 \end{figure}
 
@@ -86,10 +86,11 @@ Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected o
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{figures/d_approx.pdf}
+    \def\svgwidth{0.5\textwidth}
+    \input{build/d_approx.pdf_tex}
     \caption{Projection of \(\bm{r}_{\text{receiver}}\)}\label{fig:d_approx}
 \end{figure}
-
+ 
 
 \section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
 Every virtual target recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.

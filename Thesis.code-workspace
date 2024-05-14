@@ -5,7 +5,6 @@
         }
     ],
     "settings": {
-        "terminal.integrated.defaultProfile.windows": "Command Prompt",
         "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)",
         
         "files.exclude": {
