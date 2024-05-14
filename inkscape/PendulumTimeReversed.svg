@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="72mm"
+   height="72mm"
+   viewBox="0 0 72 71.999999"
+   version="1.1"
+   id="svg9782"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="PendulumTimeReversed.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview9784"
+     pagecolor="#ffffff"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4324916"
+     inkscape:cx="112.74063"
+     inkscape:cy="83.421084"
+     inkscape:window-width="958"
+     inkscape:window-height="981"
+     inkscape:window-x="952"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs9779">
+    <marker
+       style="overflow:visible"
+       id="Arrow3"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow3"
+       markerWidth="4.2071066"
+       markerHeight="7"
+       viewBox="0 0 4.2071068 7"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
+         d="M 3,-3 0,0 3,3"
+         id="arrow3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-37.558932,-84.362687)">
+    <path
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.893236;stroke-linecap:round"
+       d="M 80.639109,84.809852 58.459671,123.19121"
+       id="path20685" />
+    <ellipse
+       style="fill:#000000;stroke:#000000;stroke-width:0.893236;stroke-linecap:round"
+       id="path20793"
+       cx="58.459671"
+       cy="123.19121"
+       rx="3.2858427"
+       ry="3.3134987" />
+    <path
+       style="fill:#ff0000;stroke:#000000;stroke-width:0.893236;stroke-linecap:round"
+       d="M 80.639109,84.809852 91.796517,127.78403"
+       id="path20803" />
+    <path
+       style="fill:none;stroke:#0000ff;stroke-width:0.893;stroke-linecap:round;stroke-dasharray:none;marker-end:url(#Arrow3)"
+       d="m 52.983265,130.64658 c -41.097214,-26.4295 11.774271,31.9635 46.2481,11.5025"
+       id="path22628"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.893236;stroke-linecap:butt;stroke-dasharray:2.67971, 0.893236;stroke-dashoffset:0"
+       d="M 80.639109,84.809852 V 155.49109"
+       id="path22630"
+       sodipodi:nodetypes="cc" />
+    <ellipse
+       style="fill:#000000;stroke:#000000;stroke-width:0.893236;stroke-linecap:round"
+       id="circle22632"
+       cx="91.796516"
+       cy="127.78403"
+       rx="3.2858427"
+       ry="3.3134987" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.893236;stroke-linecap:butt;stroke-dasharray:2.67971, 0.893236;stroke-dashoffset:0"
+       d="m 62.999639,115.33483 c 0,0 8.106027,4.4699 17.63947,3.98169"
+       id="path25355"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:3.67633px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-dasharray:none;stroke-dashoffset:0"
+       x="72.756859"
+       y="114.34557"
+       id="text25359"
+       transform="scale(0.995818,1.0041996)"><tspan
+         sodipodi:role="line"
+         id="tspan25357"
+         style="font-size:3.67633px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-dasharray:none;stroke-dashoffset:0"
+         x="72.756859"
+         y="114.34557">$\Theta$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.9389px;line-height:0px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;fill-opacity:1;stroke:none;stroke-width:0;stroke-linecap:butt;stroke-dasharray:none;stroke-dashoffset:0"
+       x="78.883858"
+       y="67.764595"
+       id="text26875"><tspan
+         sodipodi:role="line"
+         id="tspan26873"
+         style="stroke-width:0"
+         x="78.883858"
+         y="67.764595" /></text>
+  </g>
+</svg>

@@ -20,9 +20,33 @@ In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\mathc
 As \(s(t)\) is an observable trajectory in the physical world, it is a solution to the equations given by the laws that describe the system. 
 A law being time-reversal invariant, therefore implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
 
-For a more hands-on example, imagine filming a ball that is influenced by gravity while flying through a vacuum.
+\begin{figure}[ht]
+    \centering
+    \begin{minipage}{0.34\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        \input{build/PhasePlot.pdf_tex}
+        \def\svgwidth{\textwidth}
+        \input{build/Pendulum.pdf_tex}
+    \end{minipage}
+    \begin{minipage}{0.2\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        {\Huge \input{build/TRimplication.pdf_tex}}
+    \end{minipage}
+    \begin{minipage}{0.34\textwidth}
+        \centering
+        \def\svgwidth{\textwidth}
+        \input{build/PhasePlotTimeReversed.pdf_tex}
+        \def\svgwidth{\textwidth}
+        \input{build/PendulumTimeReversed.pdf_tex}
+    \end{minipage}
+    \caption{The phase state of the pendulum contains the position specified by the angle \(\Theta \) between the pendulum and the vertical line that extends directly downward from the pivot point and the angular velocity of the pendulum \(\frac{d\Theta}{dt}\). Time-reversing this trajectory in the phase portrait means reversing the flow direction and mirroring the trajectory at the \(\Theta \)-axis.}\label{fig:phase_plot}
+\end{figure}
+
+For a more hands-on example, imagine filming a pendulum that is influenced by gravity.
 Newtons second law \({F}=m \cdot {a}\) is time-reversal invariant. 
-This means the film can be played backwards and the trajectory of the ball will still follow Newtons second law.
+This means the film can be played backwards and the trajectory of the pendulum will still follow Newtons second law (see Figure~\ref{fig:phase_plot}).
 An example for a non time-reversal invariant law is the second law of thermodynamics, which states that the entropy of an isolated system never decreases.
 This means, that a film of a gas spreading out in a room played backwards would not comply to this law, as the entropy of the system in the backwards film actually decreases by time.
 

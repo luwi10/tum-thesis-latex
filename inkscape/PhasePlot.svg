@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="72mm"
+   height="72mm"
+   viewBox="0 0 72.000002 72"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="PhasePlot.svg"
+   inkscape:export-filename="PhasePlot.pdf"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4324916"
+     inkscape:cx="132.63603"
+     inkscape:cy="70.855564"
+     inkscape:window-width="958"
+     inkscape:window-height="981"
+     inkscape:window-x="-8"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="Arrow3"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow3"
+       markerWidth="4.2071066"
+       markerHeight="6.9999995"
+       viewBox="0 0 4.2071068 7"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:round"
+         d="M 3,-3 0,0 3,3"
+         id="arrow3"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Arrow1"
+       markerWidth="4.0606604"
+       markerHeight="6.7071066"
+       viewBox="0 0 4.0606602 6.7071068"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         style="fill:none;stroke:context-stroke;stroke-width:1;stroke-linecap:butt"
+         d="M 3,-3 0,0 3,3"
+         id="path5057"
+         transform="rotate(180,0.125,0)"
+         sodipodi:nodetypes="ccc" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.305224,-56.471468)">
+    <path
+       style="fill:#0000ff;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+       d="M 27.705224,94.936567 H 93.089552"
+       id="path186" />
+    <path
+       style="fill:#0000ff;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1)"
+       d="M 60.580231,127.81157 V 62.427246"
+       id="path1224" />
+    <circle
+       style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:0.799999;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       id="path1333"
+       cx="60.580231"
+       cy="94.936569"
+       r="20.112967" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;line-height:0;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:none;fill-opacity:0;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="58.752541"
+       y="60.9604"
+       id="text1857"><tspan
+         sodipodi:role="line"
+         id="tspan1855"
+         style="font-size:4.93889px;line-height:0px;fill:#000000;fill-opacity:1;stroke-width:0;stroke-dasharray:none"
+         x="58.752541"
+         y="60.9604">$\Theta$</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, ';fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1"
+       x="93.594788"
+       y="96.176117"
+       id="text1911"><tspan
+         sodipodi:role="line"
+         id="tspan1909"
+         style="font-size:4.93889px;stroke-width:0;stroke-dasharray:none"
+         x="93.594788"
+         y="96.176117">$\frac{d\Theta}{dt}$</tspan></text>
+    <path
+       id="path8555"
+       style="fill:#ff0000;fill-opacity:0;stroke:#ff0000;stroke-width:1.2;stroke-linecap:round;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow3)"
+       d="m 71.372535,111.90882 a 20.112967,20.112967 0 0 1 -10.792304,3.14071 20.112967,20.112967 0 0 1 -20.112967,-20.112964 20.112967,20.112967 0 0 1 2.74002,-10.1347" />
+  </g>
+</svg>
