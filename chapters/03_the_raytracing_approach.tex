@@ -28,7 +28,7 @@ The calculation of the field propagation along this ray-path from one hit-point 
 
 The sum of all receiver contributions at each point in the imaging domain then gives rise to the time-reversed field of this wavefront in the imaging domain.
 By taking the absolute value of the time-reversed field, the image is obtained.
-For a better resolution of the image, this step is repeated for all measured frequencies \(\omega_i\).
+For a better signal to noise ratio of the image, this step is repeated for all measured frequencies \(\omega_i\).
 This can be summarized in the imaging formula of the n-th wavefront
 \begin{equation}
     I_n(\bm{r}_k) = |\sum_{i=1}^{N} \sum_{j=1}^{M} \underline{\mathsf{E}}_{ij}^* \cdot H_{j \rightarrow k}(\omega_i)|
@@ -50,6 +50,7 @@ In the following, the initial single point in the imaging domain is called the p
 A path is distinguished by its launch location, the receiver where it ends, and the sequence of plane surfaces it encounters between the launch point and the receiver.
 The receiver is modelled as a sphere with radius \(r_{\text{rec}}\) around the receiver location.
 This radius should be chosen big enough, so the randomly generated rays do not all miss the receiver, but small enough to not overlap with other receivers.
+In this thesis a radius of \(\SI{0.5}{\milli\meter}\) was chosen.
 If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \cdot \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
 To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\).
 
@@ -64,7 +65,6 @@ Setting \(s\) to the distance \(d\) that the ray traveled results in the corresp
     \bm{v} = \bm{r}_p + d \cdot \bm{u}_{\text{init}}
 \end{equation}
 Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well  (see Figure~\ref{fig:virtual_targets}).
-
 It is important to stress that this approach only works for points close to the probe point.
 If the point is too far away, a ray shot at the virtual target might not hit the receiver.
 In a similar way, the virtual targets found for the probe point might not account for all the paths between an imaging point and the receiver.
@@ -92,9 +92,9 @@ Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected o
 \end{figure}
  
 
-\section{Subdivision Into Wavefronts}\label{section:subdivision_into_wavefronts}
+\section{Grouping of Virtual Targets by Wavefronts}\label{section:subdivision_into_wavefronts}
 Every virtual target recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.
-By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be simulated.
+By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be computed numerically.
 A subset of virtual targets which accounts for one mirrored version of all receiver locations is called a wavefront.
 There are as many wavefronts as there are different paths from one receiver to the probe point.
 The virtual targets are mapped to the wavefronts by the hash value of the ray before including the hit receivers object-ID into the hash calculation.
@@ -105,13 +105,13 @@ The subdivision of the virtual targets into wavefronts is done to get more insig
 To retrieve the final time-reversed image, the images of all wavefronts simply have to be summed up.
 
 
-\section{Calculation of the Field Propagation}\label{section:calculation_of_the_field_propagation}
-As shown in Equation~\eqref{eq:field-along-ray-path}, the propagation of the electric field along the ray-path according to the path-length \(l\) is calculated by:
+\section{Computation of the Field Propagation}\label{section:calculation_of_the_field_propagation}
+As shown in~\eqref{eq:field-along-ray-path}, the propagation of the electric field along the ray-path according to the path-length \(l\) is calculated by:
 \begin{equation}
     \underline{E}(l) = \frac{1}{1 + l} \cdot \underline{E}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
 \end{equation} 
 
-The ray tracing program will calculate the location where a ray hits a plane surface (or receiver sphere respectively) and the direction of the reflected ray.
+The ray tracing program will compute the location where a ray hits a plane surface (or receiver sphere respectively) and the direction of the reflected ray.
 To efficiently trace the field along the ray-path, the resulting field \(\underline{E}_{\text{new}}\) at the hit location should be calculated from the field \(\underline{E}_{\text{old}}\) at the previous hit location (or the launch location respectively), the length of the path at this old hit location \(l_{\text{old}}\) and the distance \(d\) between the old and the new hit point.
 \begin{equation}
     \underline{E}_{\text{new}} = \underline{E}_{\text{new}}(l_{\text{new}}) = \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)
