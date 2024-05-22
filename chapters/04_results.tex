@@ -45,19 +45,11 @@ To create a pure Non-Line-of-Sight scenario, a PEC-plate is placed between the s
 Another PEC-plate is placed perpendicular on top of the blocking plate with a small gap between both plates to create a reflecting path.
 The resulting setup is shown in Figure~\ref{fig:nlos_setup}.
 
-\begin{figure}[ht]
+\begin{figure}[p]
     \centering
-    \includegraphics[page=3, width=0.8\textwidth]{figures/pure_nlos.pdf}
+    \includegraphics[trim=0 0 0 70pt, clip, page=3, width=0.8\textwidth]{figures/pure_nlos.pdf}
     \caption{The NLOS Setup}\label{fig:nlos_setup}
-\end{figure}
 
-In this setup only a small fraction of the emitted wave passes through the gap, reflect off the top plate and reach the receivers.
-A simpler algorithm that only considers the distances between the receivers and the imaging points would fail to reconstruct the dipole locations.
-The proposed algorithm on the other hand is able to reconstruct the sources as shown in Figure~\ref{fig:nlos_results}.
-In the plots the paths of the rays that are considered by the algorithm are visualized as yellow lines for some of the imaging points.
-
-\begin{figure}[ht]
-    \centering
     \includegraphics[page=2, width=0.49\textwidth]{figures/pure_nlos_naive.pdf}
     \includegraphics[page=2, width=0.49\textwidth]{figures/pure_nlos.pdf}
     \includegraphics[page=1, width=0.49\textwidth]{figures/pure_nlos_naive.pdf}
@@ -65,6 +57,10 @@ In the plots the paths of the rays that are considered by the algorithm are visu
     \caption{The Intensity of the Backpropagated field using a naive algorithm (left) compared to the ray-tracing algorithm (right)}\label{fig:nlos_results}
 \end{figure}
 
+In this setup only a small fraction of the emitted wave passes through the gap, reflect off the top plate and reach the receivers.
+A simpler algorithm that only considers the distances between the receivers and the imaging points would fail to reconstruct the dipole locations.
+The proposed algorithm on the other hand is able to reconstruct the sources as shown in Figure~\ref{fig:nlos_results}.
+In the plots the paths of the rays that are considered by the algorithm are visualized as yellow lines for some of the imaging points.
 This scenario with only one reflection off a plane PEC-plate is very similar to the pure LOS-scenario.
 There is no multipath propagation between the source and the receiver, so the algorithm can be simplified to a similar form as Equation~\eqref{eq:naive_algorithm} with the only difference being that the distance between the imaging point and the \textbf{mirrored} receiver-location should be considered.
 
@@ -74,24 +70,16 @@ There is no multipath propagation between the source and the receiver, so the al
 The initial idea for using the ray-tracing algorithm is to improve the imaging for multipath scenarios.
 The resulting image should theoretically enhance if the geometry of the setup and therefore all the paths between the imaging domain and receivers are taken into account, as more information is available than in a naive approach.
 To test this, the following two scenarios are considered (see Figure~\ref{fig:MultipathNLOS_setup}).
-First a setup with multiple reflecting paths and a direct path between the source and the receiver is examined.
-Secondly the same setup is used, but a blocking plate is placed in front of the dipoles, so no direct path between the source and the receiver exists.
+First a setup with multiple reflecting paths and a direct path between the source and the receiver is examined (LOS).
+To create the reflecting paths, a room made of PEC-plates is constructed around the setup.
+This room is is only open to the side where the receivers are placed, so most of the energy of the sources is guided to them.
+Secondly the same setup is used, but a blocking plate is placed in front of the dipoles, so no direct path between the source and the receiver exists (NLOS).
 
-
-\begin{figure}[p]
+\begin{figure}[ht]
     \centering
     \includegraphics[page=3, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
     \includegraphics[page=3, width=0.49\textwidth]{figures/multipath_nlos_combined.pdf}
     \caption{The Multipath Setup for LOS (left) and NLOS (right)}\label{fig:MultipathNLOS_setup}
-\end{figure}
-
-\begin{figure}[p]
-    \centering
-    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
-    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
-    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
-    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
-    \caption{The LOS-results considering only the direct wavefront (left) and combining all wavefronts (right)}\label{fig:MultipathLOS}
 \end{figure}
 
 \subsection{LOS Multipath}
@@ -101,6 +89,31 @@ The question is, whether considering the paths of the other wavefronts actually 
 As can be seen in Figure~\ref{fig:MultipathLOS}, both images are a very good approximation of the source-locations.
 A closer look reveals that in the image where only the direct wavefront is considered, the dipoles closer to the receivers are shown more intensely than the dipoles further away.
 The right image shows almost the same intensity for all dipoles, which is the expected result.
+Furthermore the image quality is slightly better when all the wavefronts are considered, as the sources appear much sharper.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
+    \includegraphics[page=2, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_direct.pdf}
+    \includegraphics[page=1, width=0.49\textwidth]{figures/multipath_los_combined.pdf}
+    \caption{The LOS-results considering only the direct wavefront (left) and combining all wavefronts (right)}\label{fig:MultipathLOS}
+\end{figure}
+
+\subsection{NLOS Multipath}
+In this multipath setup no LOS-wavefront exists, so the image can only be reconstructed by the reflected wavefronts.
+To show, that the algorithm actually improves by considering all the paths, the image for every wavefront is compared to their combined result which is retrieved by summing up the images of every wavefront.
+The results for each single wavefront in the NLOS Multipath scenario are shown in Figure~\ref{fig:MultipathNLOS_results}.
+They all indicate information about parts of the imaging domain, but none can be used alone to reconstruct the source-locations.
+The combined image however shows the dipoles clearly with just a little inaccuracy directly behind the blocking wall (see Figure~\ref{fig:MultipathNLOS_combined}).
+This can be explained by the fact that in this area two of the four wavefronts do not contribute any information as indicated by the blue shadow in their individual images.
+To solve this problem, the room around the setting could be improved, so there are multiple reflecting paths to every point in the imaging domain.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[page=1, width=0.7\textwidth]{figures/multipath_nlos_combined.pdf}
+    \caption{The combined image of all the single wavefronts together}\label{fig:MultipathNLOS_combined}
+\end{figure}
 
 \begin{figure}[hp]
     \centering
@@ -119,19 +132,7 @@ The right image shows almost the same intensity for all dipoles, which is the ex
     \caption{The resulting images for all four wavefronts in the NLOS-multipath scenario}\label{fig:MultipathNLOS_results}
 \end{figure}
 
-\subsection{NLOS Multipath}
-In the multipath setup no LOS-wavefront exists, so the image can only be reconstructed by the reflected wavefronts.
-To show, that the algorithm actually improves by considering all the paths, the image for every wavefront is compared to their combined result which is retrieved by summing up the images of every wavefront.
-The results for each single wavefront in the NLOS Multipath scenario are shown in Figure~\ref{fig:MultipathNLOS_results}.
-They all indicate information about parts of the imaging domain, but none can be used alone to reconstruct the source-locations.
-The combined image however shows the dipoles clearly with just a little inaccuracy directly behind the blocking wall (see Figure~\ref{fig:MultipathNLOS_combined}).
-
-\begin{figure}[hp]
-    \centering
-    \includegraphics[page=1, width=0.7\textwidth]{figures/multipath_nlos_combined.pdf}
-    \caption{The combined image of all the single wavefronts together}\label{fig:MultipathNLOS_combined}
-\end{figure}
-
+\newpage
 \section{Limitations and Robustness}
 The previous section showed that the presented algorithm works in the specified scenario.
 Although the results are quite promising, as it was possible to reconstruct the original sources quite well, there are limitations of the algorithm that should be considered when applying it.

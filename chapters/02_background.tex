@@ -14,11 +14,11 @@ In general the time-reversal transformation consists of two components~\parencit
 First, the trajectory \(s(t)\) has to be time-reversed by \(s(t) \mapsto s(-t)\).
 This means, that the sequence of the states is reversed with respect to time.
 This alone is not sufficient as the properties of the states have to be time-reversed as well.
-In a second step, a time-reversal operator has to be applied to each individual instantaneous state \(s(t) \mapsto \mathcal{T}s(t)\), e.g.\ a ball with velocity to the right would become a ball with velocity to the left.
+In a second step, a time-reversal operator has to be applied to each individual instantaneous state \(s(-t) \mapsto \mathcal{T}s(-t)\), e.g.\ a ball with velocity to the right would become a ball with velocity to the left.
 The time-reversal operator acts by either reversing (momentum) or preserving (kinetic energy) the properties.
-In summary, time reversing the curve \(s(t)\) results in the curve \(r(t)=\mathcal{T}s(-t)\). 
+In summary, time reversing \(s(t)\) results in the trajectory \(r(t)=\mathcal{T}s(-t)\). 
 As \(s(t)\) is an observable trajectory in the physical world, it is a solution to the equations given by the laws that describe the system. 
-A law being time-reversal invariant, therefore implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
+A law being time-reversal invariant implies that the time-reversed curve \(r(t)\) is also a solution to this law~\parencite{roberts_time_2021}.
 
 \begin{figure}[ht]
     \centering
@@ -195,7 +195,8 @@ The time limit of the diverging field \(A(\bm{r})\) to infinity is zero because 
     \psi_S(\bm{r}) = \psi_{\text{TR}}(\bm{r}).
 \end{equation}
 
-In conclusion \parencite{de_rosny_theory_2010} proves that it is possible to compute or recreate the time-reversed version of an electromagnetic field \(\psi_{\text{TR}}\) inside of a volume \(\Gamma \) by measuring the field \(\psi \) at a closed surface \(\delta \Gamma \) that contains all the sources, applying the time-reversal operator \(\mathcal{T}\) to these measurements and emitting the resulting sources back into \(\Gamma \).
+Therefore the time-reversed electromagnetic field \(\psi_{\text{TR}}\) inside of a volume \(\Gamma \) can be obtained from the fields \(\psi \) at a closed surface \(\delta \Gamma \) that contains all the sources.
+This is done by applying the time-reversal operator \(\mathcal{T}\) to these fields and emitting the resulting sources back into \(\Gamma \).
 
 
 
@@ -329,9 +330,9 @@ The summing up of the results for \(P\) different frequencies \(\omega_k\) is th
 \section{The Ray Concept of Electromagnetic Waves}\label{sec:ray-concept}
 To utilize the imaging formula one needs to know the transfer-function \(H_{i\rightarrow p}(\omega)\) between every receiver and every imaging-point in the target-domain.
 This could be done by full-wave simulations of delta-impulses at the measurement locations.
-These simulations are extremely computationally expensive.
+These simulations can be computationally expensive, especially for electrically large scenarios.
 For this reason a geometric ray-tracing approach is taken to calculate these channel characteristics.
-The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough.
+The following section will discuss the connection between Maxwell's equations and geometrical optics, to justify the use of rays for the calculation of the transfer-function, if the wavelength \(\lambda \sim \omega^{-1} \) is small enough compared to the dimensions of the objects involved.
 
 \subsection{Deriving the Eikonal Equation from Maxwell's Equations}
 The following argumentation is based on~\parencite{born_geometrische_1933} and~\parencite{sommerfeld_anwendung_1911}.
@@ -423,7 +424,7 @@ With this in mind and \(\theta_1\),\(\theta_2\) denoting the angles of \(\bm{v}_
 It is known, that at the transition between two media with different refractive indices there is always a refracted as well as a reflected wave.
 The reflected wave is in the same medium as the incident wave, which leads to the law of specular reflection.
 \begin{equation}
-    \sin(\theta_{inc}) = \sin(\theta_{ref})
+    \sin(\theta_{\text{inc}}) = \sin(\theta_{\text{ref}})
 \end{equation}
 
 
@@ -437,12 +438,13 @@ In a homogenous medium this simplifies to
     k_0 \cdot \psi(\bm{r}(l)) = k_0 \cdot n \cdot l
 \end{equation}
 
-The Amplitude on the other hand has a much more complex behavior even along ray-paths.
+The amplitude propagation on the other hand is approximated under the far-field condition.
+This condition is fulfilled if the distance from the source is much larger than the wavelength of the wave.
 For a single point-source in a lossless medium the radiated energy is conserved so the integral over the Poynting-Vector \(S\) over a sphere \(\mathcal{S} \) of radius \(r\) must be independent of \(r\).
 \begin{equation}
     \int_\mathcal{S}  S \cdot \bm{n} \, d\Omega = |S| \cdot 4\pi r^2 = \text{const}
 \end{equation}
-This means, the amplitude of \(S\) is inversely proportional to the square of the distance from the source.
+This means, the amplitude of \(S\) is inversely proportional to the square of the distance from the source in the far-field.
 The amplitude of the Poynting-Vector is furthermore proportional to the amplitude of the electric field squared, which concludes that the amplitude of the electric field is inversely proportional to the distance from the source.
 \begin{equation}
     |\bm{E}| \propto \frac{1}{r}

@@ -1,3 +1,13 @@
 \chapter{\abstractname}
 
-%TODO: Abstract
+Imaging algorithms have important applications in our daily life. They are used in medical imaging, security checks, and non-destructive testing. 
+A very common algorithm for microwave imaging is the time-reversal algorithm.
+This algorithm is often based on full-wave simulations that are computationally expensive.
+In this thesis, a new approach to improve time-reversal algorithms for microwave imaging is presented.
+To do this the ray concept of the electromagnetic field that arises from geometrical optics is used.
+This way the ray-tracing capabilities that are implemented in modern day GPUs can be used to speed up the time-reversal algorithm, especially for complex multipath environments.
+The algorithm was implemented using the ray-tracing capabilities of the NVIDIA OptiX framework.
+The results show that it can improve the image quality and reduce the computational time compared to the conventional time-reversal algorithm.
+For the future work, some ideas are proposed to further improve the algorithm and make it more robust for different scenarios.
+For instance the algorithm could be extended to also take the polarization of the electromagnetic field in consideration.
+With these improvements the algorithm could be used in real-world applications for example for the localization of wifi routers in a building.
