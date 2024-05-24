@@ -1,13 +1,19 @@
 \chapter{\abstractname}
 
-Imaging algorithms have important applications in our daily life. They are used in medical imaging, security checks, and non-destructive testing. 
-A very common algorithm for microwave imaging is the time-reversal algorithm.
-This algorithm is often based on full-wave simulations that are computationally expensive.
-In this thesis, a new approach to improve time-reversal algorithms for microwave imaging is presented.
+Imaging algorithms have important applications in our daily life. 
+They are used in medical imaging, security checks, and non-destructive testing. 
+A very common algorithm for microwave imaging is the backprojection algorithm, which is the backbone of modern airport scanners.
+This algorithm only considers the distances between the receiver and the imaging point to construct the image from the measured signals.
+Time-reversal imaging is a more advanced algorithm.
+It excels in the application in multipath environments, where the signal is reflected by multiple surroundings.
+Unlike the backprojection algorithm, time-reversal also takes the surroundings into account.
+This results in a significantly better image quality, especially when no line-of-sight between the receivers and the imaging domain exists.
+On the downside, time-reversal is often based on full-wave simulations that are computationally expensive.
+In this thesis, a new approach to improve the time-reversal algorithm for microwave imaging is presented.
 To do this the ray concept of the electromagnetic field that arises from geometrical optics is used.
-This way the ray-tracing capabilities that are implemented in modern day GPUs can be used to speed up the time-reversal algorithm, especially for complex multipath environments.
+This way the ray-tracing capabilities that are implemented in modern GPUs can be used to speed up the time-reversal algorithm, especially for multipath environments.
 The algorithm was implemented using the ray-tracing capabilities of the NVIDIA OptiX framework.
-The results show that it can improve the image quality and reduce the computational time compared to the conventional time-reversal algorithm.
-For the future work, some ideas are proposed to further improve the algorithm and make it more robust for different scenarios.
-For instance the algorithm could be extended to also take the polarization of the electromagnetic field in consideration.
-With these improvements the algorithm could be used in real-world applications for example for the localization of wifi routers in a building.
+For this approach, all possible paths of the waves are computed and stored as wavefronts in a first run.
+In a second run, the time-reversal image for every wavefront is computed, which can then be combined to create the final image.
+For several scenarios, the algorithm was tested and compared to the traditional naive backprojection algorithm.
+The results show that it can significantly improve the image quality compared to the traditional approach.
