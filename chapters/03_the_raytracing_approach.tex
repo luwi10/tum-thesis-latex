@@ -31,44 +31,40 @@ By taking the absolute value of the time-reversed field, the image is obtained.
 For a better signal to noise ratio of the image, this step is repeated for all measured frequencies \(\omega_i\).
 This can be summarized in the imaging formula of the n-th wavefront
 \begin{equation}
-    I_n(\bm{r}_k) = |\sum_{i=1}^{N} \sum_{j=1}^{M} \underline{\mathsf{E}}_{ij}^* \cdot H_{j \rightarrow k}(\omega_i)|
+    I_n(\bm{r}_k) = |\sum_{i=1}^{N} \sum_{j=1}^{M} \underline{\mathsf{E}}_{ij}^* H_{j \rightarrow k}(\omega_i)|,
 \end{equation}
 where \(H_{j \rightarrow k}(\omega_i)\) is the transfer function from receiver \(j\) to point \(k\) in the imaging domain at frequency \(\omega_i\) along the n-th wavefront, which is calculated by tracing the electric field along the ray-path according to~\eqref{eq:field-along-ray-path}.
 
 
 \section{Implementation of Virtual Targets for Multipath Wave Propagation}\label{section:virtual_targets}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.5\textwidth]{build/VirtualTargets.pdf}
-    \caption{The green paths show, how shooting a ray at a virtual target (dotted circle) from different locations can result in hitting the original target (full line circle). The red path on the other hand does not hit the target because its launch location is too far away from the other launch locations.}\label{fig:virtual_targets}
-\end{figure}
-
 To derive the paths for all points in the imaging domain from the paths of a single point in the imaging domain, the concept of virtual targets is used.
 In the following, the initial single point in the imaging domain is called the probe point.
-
 A path is distinguished by its launch location, the receiver where it ends, and the sequence of plane surfaces it encounters between the launch point and the receiver.
 The receiver is modelled as a sphere with radius \(r_{\text{rec}}\) around the receiver location.
 This radius should be chosen big enough, so the randomly generated rays do not all miss the receiver, but small enough to not overlap with other receivers.
 In this thesis a radius of \(\SI{0.5}{\milli\meter}\) was chosen.
-If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \cdot \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
+If a ray launched from the probe point \(\bm{r}_p\) with the initial direction \(\bm{u}_{\text{init}}\) hits a receiver, any point \(\bm{p} = \bm{r}_p + s \bm{u}_{\text{init}}\) can be used to reconstruct the path between the probe point and the receiver in the following time-reversal step.
 To do this one simply has to shoot a ray from the probe point in the direction of \(\bm{p}\).
+Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target
+\begin{equation}\label{eq:visual_target}
+    \bm{v} = \bm{r}_p + d \bm{u}_{\text{init}}.
+\end{equation}
 
-\begin{figure}
+Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well  (see Figure~\ref{fig:virtual_targets}).
+It is important to stress that this approach only works for points close to the probe point.
+If the point is too far away, a ray shot at the virtual target might not hit the receiver.
+
+\begin{figure}[H]
     \centering
+    \includegraphics[width=0.5\textwidth]{build/VirtualTargets.pdf}
+    \caption{The green paths show, how shooting a ray at a virtual target (dotted circle) from different locations can result in hitting the original target (full line circle). The red path on the other hand does not hit the target because its launch location is too far away from the other launch locations.}\label{fig:virtual_targets}
+    \vspace{2mm}
     \includegraphics[width=0.5\textwidth]{build/VirtualTargetsMultiHit.pdf}
     \caption{Two random rays hit the receiver sphere, so two virtual targets would be created (red circles) although there should be only one virtual target (green circle) at the mirrored position of the receiver circle.}\label{fig:mulithit}
 \end{figure}
 
-Setting \(s\) to the distance \(d\) that the ray traveled results in the corresponding virtual target \(\bm{v}\).
-\begin{equation}\label{eq:visual_target}
-    \bm{v} = \bm{r}_p + d \cdot \bm{u}_{\text{init}}
-\end{equation}
-Shooting a ray from any point \(\bm{r}_k\) close to the probe point in the direction of the virtual target will in most cases hit the same receiver, so the virtual target can be used to reconstruct the path between \(\bm{r}_k\) and the receiver as well  (see Figure~\ref{fig:virtual_targets}).
-It is important to stress that this approach only works for points close to the probe point.
-If the point is too far away, a ray shot at the virtual target might not hit the receiver.
 In a similar way, the virtual targets found for the probe point might not account for all the paths between an imaging point and the receiver.
-
 Another problem arises with this approach when multiple rays with slightly different launch directions hit the same receiver taking the same path (see Figure~\ref{fig:mulithit}).
 In this case two virtual targets would be recorded for one actual path.
 This would lead to an unwanted increased influence of this path in the time-reversal step.
@@ -78,13 +74,13 @@ If this is the case, the new virtual target is not saved.
 
 Furthermore, equation~\eqref{eq:visual_target} is only an approximation of a perfect virtual target, which would be retrieved by mirroring the receiver location at the plane surfaces the ray hits in a backwards manner.
 For the sake of simplicity, this is not done in the implementation.
-Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path.
+Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected on the linear slope of the ray to retrieve a more accurate value for the distance between launch location and receiver along the path:
 
 \begin{equation}
     d_{\text{approx}} = d_{\text{ray\_hit}} +  (\bm{r}_{\text{receiver}} - \bm{r}_{\text{ray\_hit}}) \cdot \bm{u}_{\text{ray\_hit}} \approx d_{\text{actual}}
 \end{equation}
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \def\svgwidth{0.5\textwidth}
     \input{build/d_approx.pdf_tex}
@@ -96,31 +92,37 @@ Instead the center of the hit sphere \(\bm{r}_{\text{receiver}}\) is projected o
 Every virtual target recorded in the preceding step is a version of one of the receivers that was mirrored at the plane surfaces the ray hit.
 By shooting rays at them from the imaging domain, the paths between the imaging domain and the receiver locations are reconstructed and therefore the according transfer functions can be computed numerically.
 A subset of virtual targets which accounts for one mirrored version of all receiver locations is called a wavefront.
-There are as many wavefronts as there are different paths from one receiver to the probe point.
+There are as many wavefronts as there are different paths from one receiver to the probe point (see Figure~\ref{fig:Wavefronts}).
 The virtual targets are mapped to the wavefronts by the hash value of the ray before including the hit receivers object-ID into the hash calculation.
 This way, the wavefronts are characterized by the sequence of plane surfaces the rays reflect of.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.35\textwidth]{build/Wavefronts.pdf}
+    \caption{In this setup, there are five rays from the imaging point (purple) to each one of the receivers (green) that are colored according to their wavefront.}\label{fig:Wavefronts}
+\end{figure}
 
 The term wavefront is used because the paths of the rays to the virtual targets of one wavefront can be seen as the paths of a common wavefront that is emitted from the receiver location.
 The subdivision of the virtual targets into wavefronts is done to get more insight into the imaging contribution of each wavefront.
 To retrieve the final time-reversed image, the images of all wavefronts simply have to be summed up.
 
-
+\newpage
 \section{Computation of the Field Propagation}\label{section:calculation_of_the_field_propagation}
 As shown in~\eqref{eq:field-along-ray-path}, the propagation of the electric field along the ray-path according to the path-length \(l\) is calculated by:
 \begin{equation}
-    \underline{E}(l) = \frac{1}{1 + l} \cdot \underline{E}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l}
+    \underline{E}(l) = \frac{1}{1 + l} \underline{E}_0 \mathrm{e}^{\mathrm{i} k_0 n l}
 \end{equation} 
 
 The ray tracing program will compute the location where a ray hits a plane surface (or receiver sphere respectively) and the direction of the reflected ray.
-To efficiently trace the field along the ray-path, the resulting field \(\underline{E}_{\text{new}}\) at the hit location should be calculated from the field \(\underline{E}_{\text{old}}\) at the previous hit location (or the launch location respectively), the length of the path at this old hit location \(l_{\text{old}}\) and the distance \(d\) between the old and the new hit point.
+To efficiently trace the field along the ray-path, the resulting field \(\underline{E}_{\text{new}}\) at the hit location should be calculated from the field \(\underline{E}_{\text{old}}\) at the previous hit location (or the launch location respectively), the length of the path at this old hit location \(l_{\text{old}}\) and the distance \(d\) between the old and the new hit point:
 \begin{equation}
     \underline{E}_{\text{new}} = \underline{E}_{\text{new}}(l_{\text{new}}) = \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)
 \end{equation}
 Considering that \(l_{\text{new}} = l_{\text{old}} + d\) the new field can be written as
 \begin{equation}
-    \underline{E}_{\text{new}} = \frac{1}{1 + l_{\text{old}} + d} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot d}  \cdot \underline{E}_{0} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l_{\text{old}}} 
+    \underline{E}_{\text{new}} = \frac{1}{1 + l_{\text{old}} + d} \mathrm{e}^{\mathrm{i} k_0 n d}  \underline{E}_{0} \mathrm{e}^{\mathrm{i} k_0 n l_{\text{old}}}.
 \end{equation}
-With \(\underline{E}_{\text{old}} = \frac{1}{1 + l_{\text{old}}} \cdot \underline{E}_0 \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot l_{\text{old}}} \) the formula for \(\underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)\) is retrieved:
+With \(\underline{E}_{\text{old}} = \frac{1}{1 + l_{\text{old}}} \underline{E}_0 \mathrm{e}^{\mathrm{i} k_0 n l_{\text{old}}} \) the formula for \(\underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d)\) is retrieved:
 \begin{equation}
-    \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d) = \underline{E}_{\text{old}} \cdot \frac{1 + l_{\text{old}}}{1 + l_{\text{old}} + d} \cdot \mathrm{e}^{\mathrm{i} k_0 \cdot n \cdot d}
+    \underline{E}_{\text{new}}(\underline{E}_{\text{old}}, l_{\text{old}}, d) = \underline{E}_{\text{old}} \frac{1 + l_{\text{old}}}{1 + l_{\text{old}} + d} \mathrm{e}^{\mathrm{i} k_0 n d}
 \end{equation}
